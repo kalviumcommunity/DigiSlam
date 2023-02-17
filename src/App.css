@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Gorditas&family=Modak&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.content {
+  min-height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.bgimg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.supportImages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 8%;
+  margin-right: 10%;
+}
+
+.supportImage1 {
+  transform: rotate(-10deg);
+  opacity: 0.5;
+  transition-duration: 0.7s;
+}
+
+.supportImage2 {
+  transform: rotate(-10deg);
+  opacity: 0.6;
+  transition-duration: 0.7s;
+}
+
+.supportImage1:hover {
+  transform: rotate(15deg);
+}
+
+.supportImage2:hover {
+  transform: rotate(15deg);
+}
+
+.contentHolder {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* background-color: rgba(255, 255, 255, 0.7); */
+}
+
+.contentHolder button {
+  display: inline-block;
+  height: 6vh;
+  width: 75%;
+  font-size: x-large;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  border: 0.5px solid rgba(5, 69, 188, 0.745);
+  background-color: rgba(5, 69, 188, 0.6);
+  margin-top: 150px;
+  box-shadow: 4px 6px rgb(97, 125, 177);
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.contentHolder button:active {
+  box-shadow: 4px 2px darkgrey;
+  transform: translate3d(2px, 2px, 0px);
+}
+
+.contentHolder button:hover {
+  background-color: rgb(53, 99, 184);
+  color: rgb(255, 255, 255);
+}
+
+#title {
+  font-size: 120px;
+  
+  -webkit-text-stroke: 1px #d45cce62;
+  color: rgba(196, 41, 224, 0.449);
+  font-family: 'Gorditas', cursive;
+  position: relative;
+  bottom: 10px;
+  right: 20px;
+}
