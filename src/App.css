@@ -198,6 +198,7 @@ a {
 #active {
     background-color: #185fc9;
     color: rgb(77, 255, 175);
+    transform: translate3d(0, 2px, 0);
 }
 
 #active:hover {
@@ -206,13 +207,15 @@ a {
 }
 
 .Username {
-    font-size: 48px;
+    font-size: 32px;
+    -webkit-text-stroke: 0.005px #DBFF00;
+    color: #185fc9;
 }
 
 .usernameHolder {
-    width: 30vw;
+    width: auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -226,11 +229,112 @@ a {
     font-family: 'Litila One', cursive;
     color: #185fc9;
     background-color: #74F0ED;
+    margin-right: 5px;
 }
 
 .usernameHolder button:active {
-    transform: translate3d(2px, 4px, 0);
+    transform: translate3d(1px, 2px, 0px);
 }
+
+.componentHolder {
+    background-color: rgba(255, 255, 255, 0.641);
+    min-height: 50vh;
+    margin: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+}
+
+.templateHolder {
+    text-align: center;
+    font-size: xx-large;
+    color: #0d00ff;
+    -webkit-text-stroke: 2px #eeff00;
+}
+
+.gridContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.grid-book-element {
+    background-image: url("./components/assets/bookBg.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    height: 25vh;
+    width: 20vh;
+    background-color: rgba(8, 8, 161, 0.327);
+    border: 2px solid #ddff00;
+    padding: 10px;
+    color: #0d00ff;
+    -webkit-text-stroke: #74F0ED 0.5px;
+    border-radius: 10px;
+}
+
+.grid-book-element img {
+    border-radius: 20px;
+}
+
+.grid-book-element:hover {
+    border: 2px solid #0d00ff;
+}
+
+.ImageHolder {
+    height: 20vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.sendToFriendsButton {
+    align-self: center;
+    height: 6vh;
+    width: 30vw;
+    border-radius: 10px;
+    background-color: rgba(195, 255, 0, 0.578);
+    text-align: center;
+    font-size: large;
+    padding: 5px;
+    color: transparent;
+    -webkit-text-stroke: 1px #0d00ff;
+    transform: translate3d(-1px, -2px, 0px);
+}
+
+.sendToFriendsButton:active {
+    transform: translate3d(1px, 2px, 0);
+}
+
+.sendToFriendsButton:hover {
+    background-color: #DBFF00;
+    color: darkblue;
+    -webkit-text-stroke: 1px hotpink;
+}
+
+footer {
+    height: 5vh;
+    position: absolute;
+    bottom: 0;
+    background-color: #0d61deae;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footerNavigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 
 /* Responsiveness */
 
@@ -349,5 +453,37 @@ a {
     .usernameHolder button {
         width: 25%;
         height: 4vh;
+    }
+
+    .componentHolder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        min-height: 60vh;
+    }
+
+    .gridContainer {
+        min-height: 100%;
+        display: flex;
+        margin-top: 25px;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 5vh;
+    }
+
+    .grid-book-element {
+        width: 20vh;
+        height: 25vh;
+    }
+
+    .sendToFriendsButton {
+        width: 80%;
+    }
+
+    footer {
+        position: fixed;
+        background-color: #185fc9;
     }
 }

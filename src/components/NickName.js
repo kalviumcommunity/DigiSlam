@@ -38,6 +38,9 @@ const NickName = () => {
             <button disabled={disabledButtonState} onClick={sessionStorage.setItem("Nick Name", nickNameValue)}>Continue</button>
           </Link>
           <p>
+            Please choose a small name without any spaces.
+          </p>
+          <p>
             <span>Remember!</span> <br/>
             Your <span>friends</span> will know you by this name.
           </p>
