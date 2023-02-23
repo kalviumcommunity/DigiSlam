@@ -322,6 +322,7 @@ footer {
     height: 5vh;
     position: absolute;
     bottom: 0;
+    color: white;
     background-color: #0d61deae;
     width: 100%;
     display: flex;
@@ -485,5 +486,6 @@ footer {
     footer {
         position: fixed;
         background-color: #185fc9;
+        color: white;
     }
 }
