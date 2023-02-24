@@ -24,10 +24,10 @@
 | Simple API - CRUD Operations using NodeJs       |        | [-](#)  |
 | Schemas and Models                              |        | [-](#)  |
 | **Front-end**                                   | 👇     | 🔗      |
-| High-fid design for your application            |        | [-](#)  |
-| ReactJS app initialization                      |        | [-](#)  |
-| Application components created                  |        | [-](#)  |
-| Application deployed                            |        | [-](#)  |
+| High-fid design for your application            |   ✔    | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/3)  |
+| ReactJS app initialization                      |   ✔    | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/2)  |
+| Application components created                  |   ✔    | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/2)  |
+| Application deployed                            |        | [-]()  |
 | **Full-Stack**                                  | 👇     | 🔗      |
 | IDE Setup                                       |        | [-](#)  |
 | NodeJs REPL                                     |        | [-](#)  |
