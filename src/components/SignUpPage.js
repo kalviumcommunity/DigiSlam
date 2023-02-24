@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import showPasswordIcon from "./assets/showPasswordIcon.png";
 import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
+import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 const SignUpPage = () => {
@@ -69,6 +70,7 @@ const SignUpPage = () => {
           </p>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

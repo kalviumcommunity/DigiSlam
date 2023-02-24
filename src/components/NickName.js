@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import landingPageBackground from "./assets/LoginBG.jpg";
+import Footer from "./Footer";
 
 const NickName = () => {
   const [disabledButtonState, setDisabledButtonState] = useState(true);
@@ -46,6 +47,7 @@ const NickName = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

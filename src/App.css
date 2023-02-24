@@ -372,7 +372,7 @@ footer {
     .navigateToLoginPageButton {
         width: 50vw;
         height: 6vh;
-        font-size: large;
+        font-size: 24pt;
         font-family: 'Lilita One', cursive;
     }
 
