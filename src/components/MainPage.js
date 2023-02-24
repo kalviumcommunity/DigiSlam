@@ -3,6 +3,7 @@ import landingPageBackground from "./assets/LoginBG.jpg";
 import YourSlams from "./YourSlams";
 import YourBook from "./YourBook";
 import Templates from "./Templates";
+import Footer from "./Footer"
 
 const MainPage = () => {
   const [activeComponent, setActiveComponent] = useState(<YourSlams/>)
@@ -55,6 +56,7 @@ const MainPage = () => {
       <div className="componentHolder">
         {activeComponent}
       </div>
+      <Footer/>
     </>
   );
 };

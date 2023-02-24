@@ -380,6 +380,8 @@ footer {
         align-self: center;
         font-size: xx-large;
         margin-top: 5%;
+        -webkit-text-stroke: 1px #DBFF00;
+        color: darkblue;
     }
 
     .landingPageBgImg {
@@ -461,7 +463,7 @@ footer {
         flex-direction: column;
         align-items: center;
         justify-content: space-evenly;
-        min-height: 60vh;
+        min-height: 55vh;
     }
 
     .gridContainer {
@@ -487,5 +489,15 @@ footer {
         position: fixed;
         background-color: #185fc9;
         color: white;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 1073px) {
+    .gridContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5vh;
     }
 }

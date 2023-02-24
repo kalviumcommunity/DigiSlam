@@ -6,7 +6,6 @@ import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import SignUpPage from "./components/SignUpPage";
 import NickName from "./components/NickName";
-import Footer from "./Footer";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/nick_name" element={<NickName />} />
       </Routes>
-      <Footer/>
     </>
   );
 }
