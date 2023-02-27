@@ -20,14 +20,14 @@ const Footer = () => {
           rel="noreferrer"
           href="https://www.linkedin.com/in/ayush-kumar-346aa3248"
         >
-          <img src={LinkedIN} height={20} alt="LinkedIN_Logo" />
+          <img src={LinkedIN} height={20} alt="Linkedin_Logo" />
         </a>
         <a
           target="_blank"
           rel="noreferrer"
           href="https://www.github.com/Ayush604141"
         >
-          <img src={Github} height={20} alt="GithubLogo" />
+          <img src={Github} height={20} alt="Github_Logo" />
         </a>
       </div>
     </footer>
