@@ -18,7 +18,7 @@ const Footer = () => {
         <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.linkedin.com/AyushKumar"
+          href="https://www.linkedin.com/in/ayush-kumar-346aa3248"
         >
           <img src={LinkedIN} height={20} alt="LinkedIN_Logo" />
         </a>
