@@ -7,6 +7,7 @@ import MainPage from "./components/MainPage";
 import SignUpPage from "./components/SignUpPage";
 import NickName from "./components/NickName";
 
+
 function App() {
   return (
     <>

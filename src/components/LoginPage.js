@@ -1,18 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import showPasswordIcon from "./assets/showPasswordIcon.png";
 import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import Loader from "../Loader";
 
 const LoginPage = () => {
   const [state, setState] = useState(false);
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleClick = () => {
     setState(!state);
   };
 
-  return (
+  useEffect(()=> {
+    setTimeout(()=>{
+      setIsLoading(false)
+    }, 1500)
+  }, [])
+  return ( isLoading ? <Loader/> :
     <>
       <img
         className="landingPageBgImg"

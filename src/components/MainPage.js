@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import YourSlams from "./YourSlams";
 import YourBook from "./YourBook";
 import Templates from "./Templates";
-import Footer from "./Footer"
+import Footer from "./Footer";
+import TailLoader from "../TailLoader";
 
 const MainPage = () => {
-  const [activeComponent, setActiveComponent] = useState(<YourSlams/>)
+  const [activeComponent, setActiveComponent] = useState(<YourSlams />);
+  const [isLoading, setIsLoading] = useState(true);
   const handleClick = (e) => {
     let buttons = document.getElementsByClassName("button");
     for (let i = 0; i < buttons.length; i++) {
@@ -15,18 +17,23 @@ const MainPage = () => {
       }
     }
     e.target.setAttribute("id", "active");
-    if(e.target.classList[1] === "2") {
-      setActiveComponent(<YourBook/>)
-    }
-    else if(e.target.classList[1] === "3") {
-      setActiveComponent(<Templates/>)
-    }
-    else if(e.target.classList[1] === "1") {
-      setActiveComponent(<YourSlams/>)
+    if (e.target.classList[1] === "2") {
+      setActiveComponent(<YourBook />);
+    } else if (e.target.classList[1] === "3") {
+      setActiveComponent(<Templates />);
+    } else if (e.target.classList[1] === "1") {
+      setActiveComponent(<YourSlams />);
     }
   };
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+  }, []);
   const Username = sessionStorage.getItem("Nick Name");
-  return (
+  return isLoading ? (
+    <TailLoader />
+  ) : (
     <>
       <img
         className="landingPageBgImg"
@@ -53,10 +60,8 @@ const MainPage = () => {
           Templates
         </button>
       </div>
-      <div className="componentHolder">
-        {activeComponent}
-      </div>
-      <Footer/>
+      <div className="componentHolder">{activeComponent}</div>
+      <Footer />
     </>
   );
 };

@@ -36,10 +36,10 @@ a {
 }
 
 .projectTitle {
-    font: normal 700 64px 'Gorditas';
+    font: normal 700 84px 'Gorditas';
     font-weight: 700;
     -webkit-text-stroke: 0.25px #DBFF00;
-    color: darkblue;
+    color: rgba(0, 0, 139, 0.475);
     padding: 20px;
 }
 
@@ -52,16 +52,17 @@ a {
 }
 
 .landingPageContentHolder p {
+    
     font-size: 72px;
     font-family: 'Lilita One', cursive;
-    font-weight: bolder;
-    color: transparent;
-    -webkit-text-stroke: 0.5px #74F0ED;
+    font-weight: lighter;
+    color: #74f0ee66;
+    -webkit-text-stroke: 1px #ffffff;
 }
 
 .landingPageContentHolder span {
-    -webkit-text-stroke: 2px #DBFF00;
-    color: transparent;
+    -webkit-text-stroke: 1px #ddff00;
+    color: #ddff005c;
 }
 
 .navigateToLoginPageButton {
@@ -319,11 +320,12 @@ a {
 }
 
 footer {
+    align-self: center;
     height: 5vh;
     position: absolute;
     bottom: 0;
-    color: white;
-    background-color: #0d61deae;
+    color: rgb(37, 0, 105);
+    background-color: #d3d6c5ad;
     width: 100%;
     display: flex;
     align-items: center;
@@ -333,9 +335,26 @@ footer {
 .footerNavigation {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    border-radius: 40px;
+    width: 10%;
+    height: 5vh;
 }
 
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.tailLoader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    height: 100vh;
+}
 
 /* Responsiveness */
 

@@ -1,23 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import Footer from "./Footer";
 
 const NickName = () => {
   const [disabledButtonState, setDisabledButtonState] = useState(true);
   const [nickNameValue, setNickNameValue] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleChange = (e) => {
-    setNickNameValue(e.target.value)
-    if(e.target.value !== "" && !e.target.value.includes(" ")){
-      setDisabledButtonState(false)
+    setNickNameValue(e.target.value);
+    if (e.target.value !== "" && !e.target.value.includes(" ")) {
+      setDisabledButtonState(false);
+    } else if (e.target.value === "" || e.target.value.includes(" ")) {
+      setDisabledButtonState(true);
     }
-    else if(e.target.value === "" || e.target.value.includes(" ")){
-      setDisabledButtonState(true)
-    }
- }
-
-  return (
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <img
         className="landingPageBgImg"
@@ -36,13 +43,16 @@ const NickName = () => {
             required
           />
           <Link to="/main">
-            <button disabled={disabledButtonState} onClick={sessionStorage.setItem("Nick Name", nickNameValue)}>Continue</button>
+            <button
+              disabled={disabledButtonState}
+              onClick={sessionStorage.setItem("Nick Name", nickNameValue)}
+            >
+              Continue
+            </button>
           </Link>
+          <p>Please choose a small name without any spaces.</p>
           <p>
-            Please choose a small name without any spaces.
-          </p>
-          <p>
-            <span>Remember!</span> <br/>
+            <span>Remember!</span> <br />
             Your <span>friends</span> will know you by this name.
           </p>
         </div>

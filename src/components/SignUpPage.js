@@ -1,18 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import showPasswordIcon from "./assets/showPasswordIcon.png";
 import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import Loader from "../Loader";
 
 const SignUpPage = () => {
   const [state, setState] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleClick = () => {
     setState(!state);
   };
-
-  return (
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <img
         className="landingPageBgImg"
@@ -57,9 +65,7 @@ const SignUpPage = () => {
             required
           />
           <Link to="/nick_name">
-            <button disabled={false}>
-              SIGN UP
-            </button>
+            <button disabled={false}>SIGN UP</button>
           </Link>
           <p>
             Already a slammer?{" "}
@@ -70,7 +76,7 @@ const SignUpPage = () => {
           </p>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
