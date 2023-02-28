@@ -38,8 +38,8 @@ a {
 .projectTitle {
     font: normal 700 84px 'Gorditas';
     font-weight: 700;
-    -webkit-text-stroke: 0.25px #DBFF00;
-    color: rgba(0, 0, 139, 0.475);
+    -webkit-text-stroke: 0.25px #003cff;
+    color: rgba(255, 255, 255, 0.7);
     padding: 20px;
 }
 
@@ -56,7 +56,7 @@ a {
     font-size: 72px;
     font-family: 'Lilita One', cursive;
     font-weight: lighter;
-    color: #74f0ee66;
+    color: #00fffb9c;
     -webkit-text-stroke: 1px #ffffff;
 }
 
@@ -316,7 +316,7 @@ a {
 .sendToFriendsButton:hover {
     background-color: #DBFF00;
     color: darkblue;
-    -webkit-text-stroke: 1px hotpink;
+    -webkit-text-stroke: 1px rgb(255, 0, 128);
 }
 
 footer {
@@ -332,6 +332,11 @@ footer {
     justify-content: space-around;
 }
 
+footer h3 {
+    font-size: x-large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 .footerNavigation {
     display: flex;
     align-items: center;
