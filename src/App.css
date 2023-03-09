@@ -324,8 +324,8 @@ footer {
     height: 5vh;
     position: absolute;
     bottom: 0;
-    color: rgb(37, 0, 105);
-    background-color: #ffffff;
+    color: rgb(0, 81, 255);
+    background-color: #d6d2d2;
     width: 100%;
     display: flex;
     align-items: center;
@@ -333,7 +333,7 @@ footer {
 }
 
 footer h3 {
-    font-size: x-large;
+    font-size: 24px;
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

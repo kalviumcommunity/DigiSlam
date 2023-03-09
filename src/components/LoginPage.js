@@ -5,7 +5,6 @@ import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Loader from "../Loader";
-
 const LoginPage = () => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true)
@@ -13,6 +12,10 @@ const LoginPage = () => {
   const handleClick = () => {
     setState(!state);
   };
+
+  const handleButtonClick = () => {
+    alert("Hello")
+  }
 
   useEffect(()=> {
     setTimeout(()=>{
@@ -29,7 +32,7 @@ const LoginPage = () => {
       <div className="loginContainer">
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="loginContentHolder">
-          <h1>Log in to DiGiSLAM</h1>
+          <h1>LOG IN TO DIGISLAM</h1>
           <input placeholder="Email" type="email" required />
           <div>
             <input
@@ -49,7 +52,7 @@ const LoginPage = () => {
             />
           </div>
           <Link to="/main">
-            <button disabled={true}>LOG IN</button>
+            <button onClick={handleButtonClick}>LOG IN</button>
           </Link>
           <p>
             Not a slammer?{" "}

@@ -5,6 +5,7 @@ import YourBook from "./YourBook";
 import Templates from "./Templates";
 import Footer from "./Footer";
 import Loader from "../Loader";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
   const [activeComponent, setActiveComponent] = useState(<YourSlams />);
@@ -43,10 +44,10 @@ const MainPage = () => {
       <div className="mainPageContainer">
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="usernameHolder">
-          <h1 className="projectTitle Username">
-            Hey {Username}
-          </h1>
-          <button disabled>LOG OUT</button>
+          <h1 className="projectTitle Username">Hey {Username}</h1>
+          <Link to="/sign_up">
+            <button>LOG OUT</button>
+          </Link>
         </div>
       </div>
       <div className="navBar">

@@ -23,8 +23,11 @@ const SignUpPage = () => {
     var Email = document.getElementById("signUpEmail").value;
     var password = document.getElementById("signUpPassword").value;
     var Confirm_password = document.getElementById("signUpConfirmPassword").value;
-    if(Regex.test(Email) && password===Confirm_password){
+    if(Regex.test(Email) && password.length >=6 && password===Confirm_password){
       setSignInDisabled(false)
+    }
+    else if(!Regex.test(Email) || !password.length >=6 || password!==Confirm_password){
+      setSignInDisabled(true)
     }
   };
   useEffect(() => {

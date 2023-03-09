@@ -11,9 +11,17 @@ const NickName = () => {
 
   const handleChange = (e) => {
     setNickNameValue(e.target.value);
-    if (e.target.value !== "" && !e.target.value.includes(" ") && e.target.value.length >= 4) {
+    if (
+      e.target.value !== "" &&
+      !e.target.value.includes(" ") &&
+      e.target.value.length >= 4
+    ) {
       setDisabledButtonState(false);
-    } else if (e.target.value === "" || e.target.value.includes(" ")) {
+    } else if (
+      e.target.value === "" ||
+      e.target.value.includes(" ") ||
+      e.target.value.length < 4
+    ) {
       setDisabledButtonState(true);
     }
   };
@@ -50,7 +58,10 @@ const NickName = () => {
               Continue
             </button>
           </Link>
-          <p>Please choose a small name without any spaces.</p>
+          <p>
+            Please choose name without any spaces. <br/> Minimum length of the name
+            must be 4 characters.
+          </p>
           <p>
             <span>Remember!</span> <br />
             Your <span>friends</span> will know you by this name.
