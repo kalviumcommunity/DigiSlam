@@ -4,7 +4,7 @@ import YourSlams from "./YourSlams";
 import YourBook from "./YourBook";
 import Templates from "./Templates";
 import Footer from "./Footer";
-import TailLoader from "../TailLoader";
+import Loader from "../Loader";
 
 const MainPage = () => {
   const [activeComponent, setActiveComponent] = useState(<YourSlams />);
@@ -32,7 +32,7 @@ const MainPage = () => {
   }, []);
   const Username = sessionStorage.getItem("Nick Name");
   return isLoading ? (
-    <TailLoader />
+    <Loader />
   ) : (
     <>
       <img
@@ -44,7 +44,7 @@ const MainPage = () => {
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="usernameHolder">
           <h1 className="projectTitle Username">
-            Hey {Username.toLowerCase()}
+            Hey {Username}
           </h1>
           <button disabled>LOG OUT</button>
         </div>
@@ -56,9 +56,9 @@ const MainPage = () => {
         <button onClick={handleClick} className="button 2">
           Your Book
         </button>
-        <button onClick={handleClick} className="button 3">
+        {/* <button onClick={handleClick} className="button 3">
           Templates
-        </button>
+        </button> */}
       </div>
       <div className="componentHolder">{activeComponent}</div>
       <Footer />

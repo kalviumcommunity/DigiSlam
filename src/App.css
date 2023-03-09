@@ -38,8 +38,8 @@ a {
 .projectTitle {
     font: normal 700 84px 'Gorditas';
     font-weight: 700;
-    -webkit-text-stroke: 0.25px #003cff;
-    color: rgba(255, 255, 255, 0.7);
+    -webkit-text-stroke: 1px #130070;
+    color: rgba(251, 255, 0, 0.902);
     padding: 20px;
 }
 
@@ -52,7 +52,7 @@ a {
 }
 
 .landingPageContentHolder p {
-    
+
     font-size: 72px;
     font-family: 'Lilita One', cursive;
     font-weight: lighter;
@@ -109,10 +109,11 @@ a {
 }
 
 .loginContentHolder h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgb(35, 35, 180);
     text-align: center;
-    -webkit-text-stroke: 1px #DBFF00;
-    font-size: 40px;
+    -webkit-text-stroke: 0.25px #ddff00d6;
+    font-size: 32px;
 }
 
 .loginContentHolder input {
@@ -300,13 +301,13 @@ a {
     height: 6vh;
     width: 30vw;
     border-radius: 10px;
-    background-color: rgba(195, 255, 0, 0.578);
+    background-color: rgba(210, 255, 64, 0.811);
     text-align: center;
     font-size: large;
     padding: 5px;
-    color: transparent;
-    -webkit-text-stroke: 1px #0d00ff;
+    color: blue;
     transform: translate3d(-1px, -2px, 0px);
+    font-weight: 600;
 }
 
 .sendToFriendsButton:active {
@@ -315,8 +316,7 @@ a {
 
 .sendToFriendsButton:hover {
     background-color: #DBFF00;
-    color: darkblue;
-    -webkit-text-stroke: 1px rgb(255, 0, 128);
+    color: blue;
 }
 
 footer {
@@ -325,7 +325,7 @@ footer {
     position: absolute;
     bottom: 0;
     color: rgb(37, 0, 105);
-    background-color: #d3d6c5ad;
+    background-color: #ffffff;
     width: 100%;
     display: flex;
     align-items: center;
@@ -337,6 +337,7 @@ footer h3 {
     font-weight: bold;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
 .footerNavigation {
     display: flex;
     align-items: center;
@@ -353,12 +354,10 @@ footer h3 {
     height: 100vh;
 }
 
-.tailLoader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100%;
-    height: 100vh;
+
+button:disabled {
+    background-color: rgba(246, 255, 0, 0.799);
+    color: #185fc9;
 }
 
 /* Responsiveness */
@@ -510,9 +509,18 @@ footer h3 {
     }
 
     footer {
+        font-size: 18px;
         position: fixed;
         background-color: #185fc9;
         color: white;
+    }
+
+    footer h3 {
+        font-size: large;
+    }
+
+    .footerNavigation {
+        width: 40%;
     }
 }
 

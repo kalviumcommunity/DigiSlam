@@ -9,9 +9,23 @@ import Loader from "../Loader";
 const SignUpPage = () => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+  const [signInDisabled, setSignInDisabled] = useState(true);
+  // const [inputValue, setInputValue] = useState({
+  //   Email: "",
+  //   Password: "",
+  //   Confirm_Password: ""
+  // });
+  const Regex = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/
   const handleClick = () => {
     setState(!state);
+  };
+  const handleChange = () => {
+    var Email = document.getElementById("signUpEmail").value;
+    var password = document.getElementById("signUpPassword").value;
+    var Confirm_password = document.getElementById("signUpConfirmPassword").value;
+    if(Regex.test(Email) && password===Confirm_password){
+      setSignInDisabled(false)
+    }
   };
   useEffect(() => {
     setTimeout(() => {
@@ -30,13 +44,13 @@ const SignUpPage = () => {
       <div className="loginContainer">
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="loginContentHolder">
-          <h1>Sign Up To DiGiSLAM</h1>
+          <h1>SIGN UP TO DIGISLAM</h1>
           <input
             id="signUpEmail"
             autoFocus
             placeholder="Email"
             type="email"
-            required
+            onChange={handleChange}
           />
           <div>
             <input
@@ -45,7 +59,7 @@ const SignUpPage = () => {
               maxLength="14"
               minLength="08"
               id="signUpPassword"
-              required
+              onChange={handleChange}
             />
             <img
               className="showPassword"
@@ -62,10 +76,10 @@ const SignUpPage = () => {
             maxLength="20"
             minLength="08"
             id="signUpConfirmPassword"
-            required
+            onChange={handleChange}
           />
           <Link to="/nick_name">
-            <button disabled={false}>SIGN UP</button>
+            <button disabled={signInDisabled}>SIGN UP</button>
           </Link>
           <p>
             Already a slammer?{" "}

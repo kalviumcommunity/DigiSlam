@@ -11,7 +11,7 @@ const NickName = () => {
 
   const handleChange = (e) => {
     setNickNameValue(e.target.value);
-    if (e.target.value !== "" && !e.target.value.includes(" ")) {
+    if (e.target.value !== "" && !e.target.value.includes(" ") && e.target.value.length >= 4) {
       setDisabledButtonState(false);
     } else if (e.target.value === "" || e.target.value.includes(" ")) {
       setDisabledButtonState(true);
