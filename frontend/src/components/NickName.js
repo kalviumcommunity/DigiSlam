@@ -14,13 +14,13 @@ const NickName = () => {
     if (
       e.target.value !== "" &&
       !e.target.value.includes(" ") &&
-      e.target.value.length >= 4
+      e.target.value.length >= 2
     ) {
       setDisabledButtonState(false);
     } else if (
       e.target.value === "" ||
       e.target.value.includes(" ") ||
-      e.target.value.length < 4
+      e.target.value.length < 2
     ) {
       setDisabledButtonState(true);
     }
@@ -60,7 +60,7 @@ const NickName = () => {
           </Link>
           <p>
             Please choose name without any spaces. <br/> Minimum length of the name
-            must be 4 characters.
+            must be 2 characters.
           </p>
           <p>
             <span>Remember!</span> <br />

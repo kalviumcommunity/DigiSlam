@@ -57,9 +57,6 @@ const MainPage = () => {
         <button onClick={handleClick} className="button 2">
           Your Book
         </button>
-        {/* <button onClick={handleClick} className="button 3">
-          Templates
-        </button> */}
       </div>
       <div className="componentHolder">{activeComponent}</div>
       <Footer />
