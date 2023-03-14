@@ -1,0 +1,60 @@
+html {
+    padding: 15px;
+    background-color: hotpink;
+}
+
+.TemplateHolder {
+    box-sizing: border-box;
+    padding: 5%;
+    background-color: #D6A3FB;
+    border-radius: 5pc;
+    min-height: 100vh;
+}
+
+.inputImage {
+    display: none;
+}
+
+.imageinputBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 35vh;
+    height: 30vh;
+    background-color: #ABF62D;
+    cursor: pointer;
+    border-radius: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.personalQuestions input{
+    width: 20vw;
+    height: 2vh;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ABF62D;
+    color: darkblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.personalQuestions input::placeholder {
+    color: blue;
+    text-align: center;
+    font-weight: 300;
+}
+
+.personalQuestions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 5pc;
+}
+
+.row-1 {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}

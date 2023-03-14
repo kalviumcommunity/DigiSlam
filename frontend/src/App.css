@@ -38,8 +38,8 @@ a {
 .projectTitle {
     font: normal 700 84px 'Gorditas';
     font-weight: 700;
-    -webkit-text-stroke: 1px #130070;
-    color: rgba(251, 255, 0, 0.902);
+    -webkit-text-stroke: 2px #0040ff;
+    color: rgba(251, 255, 0, 0.827);
     padding: 20px;
 }
 
@@ -56,13 +56,13 @@ a {
     font-size: 72px;
     font-family: 'Lilita One', cursive;
     font-weight: lighter;
-    color: #00fffb9c;
-    -webkit-text-stroke: 1px #ffffff;
+    color: #00fffbee;
+    -webkit-text-stroke: 2px #000000af;
 }
 
 .landingPageContentHolder span {
-    -webkit-text-stroke: 1px #ddff00;
-    color: #ddff005c;
+    -webkit-text-stroke: 2px #000000;
+    color: #ddff00f3;
 }
 
 .navigateToLoginPageButton {
@@ -110,9 +110,9 @@ a {
 
 .loginContentHolder h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: rgb(35, 35, 180);
+    color: rgb(0, 0, 186);
     text-align: center;
-    -webkit-text-stroke: 0.25px #ddff00d6;
+    -webkit-text-stroke: 0.5px #ddff00;
     font-size: 32px;
 }
 

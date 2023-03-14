@@ -6,6 +6,8 @@ import LoginPage from "./components/LoginPage";
 import MainPage from "./components/MainPage";
 import SignUpPage from "./components/SignUpPage";
 import NickName from "./components/NickName";
+import Loader from "./Loader";
+import Temp1 from "./components/templates/Temp1";
 
 
 function App() {
@@ -17,6 +19,8 @@ function App() {
         <Route path="/sign_up" element={<SignUpPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/nick_name" element={<NickName />} />
+        <Route path="/load" element={<Loader/>}/>
+        <Route path="/temp1" element={<Temp1/>}/>
       </Routes>
     </>
   );

@@ -28,7 +28,7 @@ const NickName = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    });
   }, []);
   return isLoading ? (
     <Loader />
@@ -59,8 +59,8 @@ const NickName = () => {
             </button>
           </Link>
           <p>
-            Please choose name without any spaces. <br/> Minimum length of the name
-            must be 2 characters.
+            Please choose name without any spaces. <br /> Minimum length of the
+            name must be 2 characters.
           </p>
           <p>
             <span>Remember!</span> <br />

@@ -10,11 +10,6 @@ const SignUpPage = () => {
   const [state, setState] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [signInDisabled, setSignInDisabled] = useState(true);
-  // const [inputValue, setInputValue] = useState({
-  //   Email: "",
-  //   Password: "",
-  //   Confirm_Password: ""
-  // });
   const Regex = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/
   const handleClick = () => {
     setState(!state);
