@@ -1,0 +1,16 @@
+{
+  "name": "serverjs",
+  "version": "1.0.0",
+  "description": "Backend for Digislam",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ayush Kumar",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1",
+    "validator": "^13.9.0"
+  }
+}
