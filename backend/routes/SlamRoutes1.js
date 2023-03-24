@@ -1,6 +1,9 @@
 const express = require("express");
+const requireAuth = require("../middlewares/requireAuth");
 const router = express.Router();
 const SlamTemp1 = require("../models/SlamSchema1");
+
+router.use(requireAuth);
 
 //getting a request in the friends.
 router.get("/", async (req, resp) => {
@@ -11,7 +14,7 @@ router.get("/", async (req, resp) => {
       resp.status(200).json(friends);
     }
   } catch (e) {
-    resp.status(500).json({ error: e.message });
+    resp.status(200).json(e);
   }
 });
 

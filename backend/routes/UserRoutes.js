@@ -8,8 +8,6 @@ const createToken = (_id) => {
   return jwt.sign({ _id }, SECRET, { expiresIn: "365d" });
 };
 
-// router.use(requireAuth);
-
 //getting all the users in digislam
 router.get("/", async (req, resp) => {
   try {
@@ -49,7 +47,7 @@ router.post("/login", async (req, resp) => {
 
     resp.status(200).json({token, user});
   } catch (e) {
-    resp.status(400).json({ error: e.message });
+    resp.status(401).json({error: e.message});
   }
 });
 
