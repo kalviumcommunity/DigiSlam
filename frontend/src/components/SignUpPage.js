@@ -1,35 +1,29 @@
 import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
-import showPasswordIcon from "./assets/showPasswordIcon.png";
-import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
-import Loader from "../Loader";
+import Loader from "../loader/Loader";
+import { useSignUp } from "./hooks/useSignUp";
 
 const SignUpPage = () => {
-  const [state, setState] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [signInDisabled, setSignInDisabled] = useState(true);
-  const Regex = /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/
-  const handleClick = () => {
-    setState(!state);
-  };
-  const handleChange = () => {
-    var Email = document.getElementById("signUpEmail").value;
-    var password = document.getElementById("signUpPassword").value;
-    var Confirm_password = document.getElementById("signUpConfirmPassword").value;
-    if(Regex.test(Email) && password.length >=6 && password===Confirm_password){
-      setSignInDisabled(false)
-    }
-    else if(!Regex.test(Email) || !password.length >=6 || password!==Confirm_password){
-      setSignInDisabled(true)
-    }
-  };
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { signup, loading, error } = useSignUp();
+  
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
   }, []);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    await signup(username, email, password)
+  };
   return isLoading ? (
     <Loader />
   ) : (
@@ -41,44 +35,35 @@ const SignUpPage = () => {
       />
       <div className="loginContainer">
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
-        <div className="loginContentHolder">
+        <form className="loginContentHolder" onSubmit={handleSubmit}>
           <h1>SIGN UP TO DIGISLAM</h1>
           <input
-            id="signUpEmail"
-            autoFocus
-            placeholder="Email"
-            type="email"
-            onChange={handleChange}
+            placeholder="Please Choose An Username"
+            type="text"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
           />
-          <div>
-            <input
-              placeholder="Password"
-              type={state ? "text" : "password"}
-              maxLength="14"
-              minLength="08"
-              id="signUpPassword"
-              onChange={handleChange}
-            />
-            <img
-              className="showPassword"
-              src={state ? hidePassWordIcon : showPasswordIcon}
-              height={20}
-              width={20}
-              onClick={handleClick}
-              alt="showPassword"
-            />
-          </div>
           <input
-            placeholder="Confirm-Password"
-            type={state ? "text" : "password"}
-            maxLength="20"
-            minLength="08"
-            id="signUpConfirmPassword"
-            onChange={handleChange}
+            placeholder="Please Enter Your Email"
+            type="text"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
-          <Link to="/nick_name">
-            <button disabled={signInDisabled}>SIGN UP</button>
-          </Link>
+          <input
+            placeholder="Choose A Strong Password"
+            type={showPassword ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <div className="showPassword">
+            <input
+              type="checkbox"
+              onClick={() => setShowPassword(!showPassword)}
+            />
+            <label>Show Password</label>
+          </div>
+          <button disabled={loading}>SIGN UP</button>
+          {error && <div>{error}</div>}
           <p>
             Already a slammer?{" "}
             <Link to="/login">
@@ -86,7 +71,7 @@ const SignUpPage = () => {
             </Link>{" "}
             here.
           </p>
-        </div>
+        </form>
       </div>
       <Footer />
     </>

@@ -1,59 +1,57 @@
 import React, { useEffect, useState } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
-import showPasswordIcon from "./assets/showPasswordIcon.png";
-import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import Loader from "../Loader";
+import Loader from "../loader/Loader";
+import { useLogin } from "./hooks/useLogin";
+
 const LoginPage = () => {
-  const [state, setState] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
+  const [showPassword, setShowPassword] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const { login, loading, error } = useLogin();
 
-  const handleClick = () => {
-    setState(!state);
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  await login(email, password)
+}
 
-  const handleButtonClick = () => {
-    alert("Hello")
-  }
-
-  useEffect(()=> {
-    setTimeout(()=>{
-      setIsLoading(false)
-    }, 1500)
-  }, [])
-  return ( isLoading ? <Loader/> :
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <img
         className="landingPageBgImg"
         src={landingPageBackground}
         alt="Landing_page_BG_Image"
       />
-      <div className="loginContainer">
+      <form className="loginContainer" onSubmit={handleSubmit}>
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="loginContentHolder">
           <h1>LOG IN TO DIGISLAM</h1>
-          <input placeholder="Email" type="email" required />
-          <div>
             <input
-              placeholder="Password"
-              type={state ? "text" : "password"}
-              maxLength="20"
-              minLength="08"
-              required
+              placeholder="Please Enter Your Email"
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
-            <img
-              className="showPassword"
-              src={state ? hidePassWordIcon : showPasswordIcon}
-              height={20}
-              width={20}
-              onClick={handleClick}
-              alt="showPassword"
+            <input
+              placeholder="Please Enter Your Password"
+              type={showPassword ? "text" : "password"}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
-          </div>
-          <Link to="/main">
-            <button onClick={handleButtonClick}>LOG IN</button>
-          </Link>
+            <div className="showPassword">
+              <input type="checkbox" onClick={() => setShowPassword(!showPassword)}/>
+              <label>Show Password</label>
+            </div>
+          <button disabled={loading}>LOG IN</button>
           <p>
             Not a slammer?{" "}
             <Link to="/sign_up">
@@ -61,8 +59,9 @@ const LoginPage = () => {
             </Link>{" "}
             here.
           </p>
+          {error && <div>{error}</div>}
         </div>
-      </div>
+      </form>
       <Footer />
     </>
   );

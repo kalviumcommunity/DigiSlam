@@ -4,12 +4,14 @@ import YourSlams from "./YourSlams";
 import YourBook from "./YourBook";
 import Templates from "./Templates";
 import Footer from "./Footer";
-import Loader from "../Loader";
-import { Link } from "react-router-dom";
+import Loader from "../loader/Loader";
+import { useLogout } from "../components/hooks/useLogout";
+
 
 const MainPage = () => {
   const [activeComponent, setActiveComponent] = useState(<YourSlams />);
   const [isLoading, setIsLoading] = useState(true);
+  const { logout } = useLogout();
   const handleClick = (e) => {
     let buttons = document.getElementsByClassName("button");
     for (let i = 0; i < buttons.length; i++) {
@@ -29,7 +31,7 @@ const MainPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 2500);
   }, []);
   const Username = sessionStorage.getItem("Nick Name");
   return isLoading ? (
@@ -45,9 +47,7 @@ const MainPage = () => {
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="usernameHolder">
           <h1 className="projectTitle Username">Hey {Username}</h1>
-          <Link to="/sign_up">
-            <button>LOG OUT</button>
-          </Link>
+          <button onClick={logout}>LOG OUT</button>
         </div>
       </div>
       <div className="navBar">

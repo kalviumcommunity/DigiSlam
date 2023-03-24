@@ -3,6 +3,7 @@ import instagram from "./assets/instagram_logo.png";
 import LinkedIN from "./assets/linkedIn_logo.png";
 import Github from "./assets/github_logo.png";
 
+
 const Footer = () => {
   return (
     <footer>

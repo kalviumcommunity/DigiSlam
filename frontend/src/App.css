@@ -10,10 +10,8 @@ html {
 * {
     margin: 0;
     padding: 0;
-}
-
-a {
-    text-align: center;
+    font-family: 'Lilita One', cursive;
+    font-weight: 100;
 }
 
 .landingPageBgImg {
@@ -38,8 +36,8 @@ a {
 .projectTitle {
     font: normal 700 84px 'Gorditas';
     font-weight: 700;
-    -webkit-text-stroke: 2px #0040ff;
-    color: rgba(251, 255, 0, 0.827);
+    -webkit-text-stroke: 2px #001c72;
+    color: rgba(251, 255, 0, 0.959);
     padding: 20px;
 }
 
@@ -61,6 +59,7 @@ a {
 }
 
 .landingPageContentHolder span {
+    font-family: 'Lilita One', cursive;
     -webkit-text-stroke: 2px #000000;
     color: #ddff00f3;
 }
@@ -105,14 +104,12 @@ a {
     position: relative;
     bottom: 10%;
     border-radius: 10px;
-    font-family: 'Lilita One', cursive;
 }
 
 .loginContentHolder h1 {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: rgb(0, 0, 186);
+    color: rgb(0, 0, 0);
     text-align: center;
-    -webkit-text-stroke: 0.5px #ddff00;
     font-size: 32px;
 }
 
@@ -125,15 +122,21 @@ a {
     border-radius: 10px;
 }
 
-.loginContentHolder div {
-    width: 100%;
-    margin-left: 15%;
+.showPassword {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
 }
 
-.loginContentHolder div>img {
-    position: relative;
-    right: 35px;
-    cursor: pointer;
+.showPassword input {
+    height: 20px;
+    width: 20px;
+    padding: 0;
+}
+
+.showPassword label {
+    font-size: 20px;
 }
 
 .loginContentHolder button {
@@ -141,11 +144,10 @@ a {
     width: 250px;
     font-size: 32px;
     font-weight: bolder;
-    color: rgba(0, 0, 255, 0.85);
-    font-family: 'Noto Sans', sans-serif;
+    color: rgb(166, 0, 158);
     border-radius: 10px;
     opacity: 1.5;
-    background-color: #ddff00;
+    background-color: #3dff3d;
 }
 
 .loginContentHolder button:active {
@@ -335,7 +337,6 @@ footer {
 footer h3 {
     font-size: 24px;
     font-weight: bold;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .footerNavigation {
@@ -347,17 +348,10 @@ footer h3 {
     height: 5vh;
 }
 
-.loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-
-button:disabled {
-    background-color: rgba(246, 255, 0, 0.799);
-    color: #185fc9;
+a {
+    text-decoration: none;
+    text-align: center;
+    color: green;
 }
 
 /* Responsiveness */
