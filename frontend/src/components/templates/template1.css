@@ -1,10 +1,13 @@
-/* Setting the default styling to zero */
+/* Giving default style to all elements */
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-size: 18px;
-    color: #82486C;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
 }
 
 /* Defining the style of form. */
@@ -17,6 +20,7 @@
     min-height: 100vh;
     background-color: #e6e0e0;
     padding: 1em;
+    color: #82486C;
 }
 
 header {
@@ -65,13 +69,13 @@ form {
     gap: 5px;
 }
 
-.row-2 section  {
+.row-2 section {
     width: 85%;
     display: grid;
     grid-template-columns: auto auto;
 }
 
-.row-2 section > div {
+.row-2 section>div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,12 +100,27 @@ form {
 .row-4 section {
     width: 85%;
     display: flex;
-    flex-direction: row ;
-    align-items: center ;
-    justify-content: space-evenly ;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .row-4 section>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40vh;
+}
+
+.row-5 section {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.row-5 section>div {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -124,10 +143,12 @@ input[type=file] {
 }
 
 label {
-    font-size: larger;
+    font-size: large;
 }
 
-input {
+.slamHolder input {
+    font-size: 1.25em;
+    color: #82486C;
     width: 30vh;
     height: 4vh;
     background-color: #fef2f0;
@@ -143,10 +164,16 @@ input:focus {
 }
 
 textarea {
-    width: 35vh;
-    height: 20vh;
-    padding: 10px;
-    max-width: auto;
+    min-width: 40vh;
+    min-height: 20vh;
+    color: #82486C;
+    padding: 5px;
+    font-size: 24px;
+}
+
+textarea:focus {
+    outline: none;
+    border: none;
 }
 
 input[type=Number]::-webkit-inner-spin-button,
@@ -161,49 +188,17 @@ button {
     border-radius: 3px;
     border: none;
     box-shadow: 3px 3px 5px #000;
+    background-color: #ffffff;
 }
 
 button:active {
     transform: translate3d(1px, 2px, 3px);
 }
-@media screen and (max-width: 992px ) {
-    .image{
-        height:120px;
-    }
-    .row{
-        flex-direction: column;
-        gap: 75px; 
 
-    }
-    button{
-        height: 4vh;
-        width: 20vw;
-    }
-    textarea{
-        width: 19vh;
-        height: 20vh;
-        margin-bottom: 9%;
-    }
-    .row-3 section {
-        display:flex;
-        flex-direction:column;
-        padding: 19%;
-    }
-    label{
-        text-align: center;
-        padding: 2%;
-    }
-    .row section{
-        width: 75vw;
-    }
-    .heading {
-        font-size: 35px;
-        text-align: center;
-    }
-    .row-2 section  {
-        display: flex;flex-direction: column;
-    }
-    .row-4 section  {
-        flex-direction: column;
-    }
+
+/* Styling the output page */
+.outputTemplate {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #F6B9E0;
 }

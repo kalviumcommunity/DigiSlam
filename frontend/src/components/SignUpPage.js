@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
-import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import Loader from "../loader/Loader";
 import { useSignUp } from "./hooks/useSignUp";
+import { ToastContainer } from "react-toastify";
 
 const SignUpPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,8 +11,7 @@ const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, loading, error } = useSignUp();
-  
+  const { signup, loading } = useSignUp();
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,8 +20,8 @@ const SignUpPage = () => {
   }, []);
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    await signup(username, email, password)
+
+    await signup(username, email, password);
   };
   return isLoading ? (
     <Loader />
@@ -38,7 +37,7 @@ const SignUpPage = () => {
         <form className="loginContentHolder" onSubmit={handleSubmit}>
           <h1>SIGN UP TO DIGISLAM</h1>
           <input
-            placeholder="Please Choose An Username"
+            placeholder="Please Enter Your Name"
             type="text"
             onChange={(e) => setUsername(e.target.value)}
             value={username}
@@ -63,7 +62,6 @@ const SignUpPage = () => {
             <label>Show Password</label>
           </div>
           <button disabled={loading}>SIGN UP</button>
-          {error && <div>{error}</div>}
           <p>
             Already a slammer?{" "}
             <Link to="/login">
@@ -73,9 +71,16 @@ const SignUpPage = () => {
           </p>
         </form>
       </div>
-      <Footer />
     </>
   );
 };
 
-export default SignUpPage;
+const Sign = () => {
+  return (
+    <>
+      <SignUpPage />
+      <ToastContainer />
+    </>
+  );
+};
+export default Sign;

@@ -1,10 +1,9 @@
 import React from "react";
-import profileImage from "./assets/profile_pic.jpg";
 
 const YourSlams = () => {
   return (
     <>
-      <div className="gridContainer">
+      {/* <div className="gridContainer">
         <div className="grid-book-element">
           <div className="ImageHolder">
             <img src={profileImage} height={80} alt="displayImage" />
@@ -29,6 +28,9 @@ const YourSlams = () => {
             <h1>Golu</h1>
           </div>
         </div>
+      </div> */}
+      <div className="templateHolder">
+        <h1>Coming Soon</h1>
       </div>
     </>
   );

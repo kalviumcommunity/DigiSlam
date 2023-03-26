@@ -3,8 +3,11 @@ import "./template1.css";
 import TempImg1 from "../assets/friendsImg1.png";
 import TempImg2 from "../assets/friendsImg2.png";
 import TempImg3 from "../assets/friendsImg3.png";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { CloudinaryContext, Image } from "cloudinary-react";
 
 const Temp1 = () => {
+  const { user } = useAuthContext();
   const [slamData, setSlamData] = useState({
     name: "",
     nick_name: "",
@@ -20,29 +23,44 @@ const Temp1 = () => {
     OurBestMemory: "",
     confession: "",
   });
+  const imageURL = () => {
+    <CloudinaryContext
+      cloudName={process.env.cloudName}
+      apiKey={process.env.apiKey}
+      apiSecret={process.env.apiSecret}
+    >
+      <Image publicId={slamData.image} width="300" height="300" crop="fill" />
+    </CloudinaryContext>;
+    
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(slamData)
-    const response = await fetch(
-      "http://localhost:8000/digislam/apis/friends",
-      {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(slamData),
-      }
-    );
-    const json = await response.json();
-    if (response.ok) {
-      console.log(json);
-    }
-    if (!response.ok) {
-      console.log(json.error);
-    }
+    console.log(slamData);
+    console.log(user);
+    imageURL();
+    // const response = await fetch(
+    //   "http://localhost:8000/digislam/apis/user",
+    //   {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //       "Authorization": `Bearer ${user.token}`,
+    //     },
+    //     body: JSON.stringify(slamData),
+    //   }
+    // );
+    // const json = await response.json();
+    // if (response.ok) {
+    //   console.log(json);
+    // }
+    // if (!response.ok) {
+    //   console.log(json.error);
+    // }
   };
   return (
     <div className="slamHolder">
       <header>
-        <img src={TempImg3} alt="image1" height={200}/>
+        <img src={TempImg3} alt="image1" height={200} />
         <p className="heading">
           "A friend knows the truth and the pain that you hide from the rest of
           the world."
@@ -79,7 +97,7 @@ const Temp1 = () => {
                 onChange={(e) =>
                   setSlamData({
                     ...slamData,
-                    image: URL.createObjectURL(e.target.files[0]),
+                    image: e.target.files[0],
                   })
                 }
               />
@@ -154,7 +172,7 @@ const Temp1 = () => {
                 </div>
               </div>
             </div>
-            <img src={TempImg2} height={200} alt="image2" className="image"/>
+            <img src={TempImg2} height={200} alt="image2" className="image" />
           </section>
         </div>
         <div className="row-3 row">
@@ -182,7 +200,29 @@ const Temp1 = () => {
         <div className="row-4 row">
           <section>
             <div>
-              <label>Anything You Want Me To Know</label>
+              <label>The best moment of your life</label>
+              <textarea
+                value={slamData.bestMoment}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, bestMoment: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label>Our best memory together</label>
+              <textarea
+                value={slamData.OurBestMemory}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, OurBestMemory: e.target.value })
+                }
+              />
+            </div>
+          </section>
+        </div>
+        <div className="row-5 row">
+          <section>
+            <div>
+              <label>Anything you want me to tell me</label>
               <textarea
                 value={slamData.confession}
                 onChange={(e) =>
@@ -191,7 +231,7 @@ const Temp1 = () => {
               />
               <button>Submit</button>
             </div>
-            <img src={TempImg1} height={200} alt="image3" className="image"/>
+            <img src={TempImg1} height={200} alt="image3" className="image" />
           </section>
         </div>
       </form>

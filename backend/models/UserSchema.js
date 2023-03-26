@@ -20,6 +20,31 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+
+  slams: {
+    type: Array,
+    default: [],
+    items: {
+      type: [
+        {
+          name: String,
+          nick_name: String,
+          dob: String,
+          image: String,
+          instagram: String,
+          facebook: String,
+          snapchat: String,
+          phoneNumber: Number,
+          likes: String,
+          dislikes: String,
+          bestMoment: String,
+          OurBestMemory: String,
+          confession: String,
+        },
+      ],
+      default: [{}],
+    },
+  },
 });
 
 UserSchema.statics.signup = async function (username, email, password) {
