@@ -1,59 +1,63 @@
 import React, { useEffect, useState } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
-import showPasswordIcon from "./assets/showPasswordIcon.png";
-import hidePassWordIcon from "./assets/action-hide-passwordIcon.png";
 import { Link } from "react-router-dom";
-import Footer from "./Footer";
-import Loader from "../Loader";
-const LoginPage = () => {
-  const [state, setState] = useState(false);
-  const [isLoading, setIsLoading] = useState(true)
+import Loader from "../loader/Loader";
+import { useLogin } from "./hooks/useLogin";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-  const handleClick = () => {
-    setState(!state);
+const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const { login, loading } = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(email, password);
   };
 
-  const handleButtonClick = () => {
-    alert("Hello")
-  }
-
-  useEffect(()=> {
-    setTimeout(()=>{
-      setIsLoading(false)
-    }, 1500)
-  }, [])
-  return ( isLoading ? <Loader/> :
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <img
         className="landingPageBgImg"
         src={landingPageBackground}
         alt="Landing_page_BG_Image"
       />
-      <div className="loginContainer">
+      {/* {Error !== "" && toast.error(Error)} */}
+      <ToastContainer />
+      <form className="loginContainer" onSubmit={handleSubmit}>
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="loginContentHolder">
           <h1>LOG IN TO DIGISLAM</h1>
-          <input placeholder="Email" type="email" required />
-          <div>
+          <input
+            placeholder="Please Enter Your Email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <input
+            placeholder="Please Enter Your Password"
+            type={showPassword ? "text" : "password"}
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <div className="showPassword">
             <input
-              placeholder="Password"
-              type={state ? "text" : "password"}
-              maxLength="20"
-              minLength="08"
-              required
+              type="checkbox"
+              onClick={() => setShowPassword(!showPassword)}
             />
-            <img
-              className="showPassword"
-              src={state ? hidePassWordIcon : showPasswordIcon}
-              height={20}
-              width={20}
-              onClick={handleClick}
-              alt="showPassword"
-            />
+            <label>Show Password</label>
           </div>
-          <Link to="/main">
-            <button onClick={handleButtonClick}>LOG IN</button>
-          </Link>
+          <button disabled={loading}>LOG IN</button>
           <p>
             Not a slammer?{" "}
             <Link to="/sign_up">
@@ -62,10 +66,17 @@ const LoginPage = () => {
             here.
           </p>
         </div>
-      </div>
-      <Footer />
+      </form>
     </>
   );
 };
 
-export default LoginPage;
+const Login = () => {
+  return (
+    <>
+      <LoginPage />
+    </>
+  );
+};
+
+export default Login;

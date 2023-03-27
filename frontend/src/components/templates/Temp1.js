@@ -1,33 +1,241 @@
-import React from "react";
+import { useState } from "react";
 import "./template1.css";
-import HolderImage from "../assets/choose-image.png";
+import TempImg1 from "../assets/friendsImg1.png";
+import TempImg2 from "../assets/friendsImg2.png";
+import TempImg3 from "../assets/friendsImg3.png";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { CloudinaryContext, Image } from "cloudinary-react";
 
 const Temp1 = () => {
-  const handleImageInput = () => {
-    document.getElementById("activeImage").click();
+  const { user } = useAuthContext();
+  const [slamData, setSlamData] = useState({
+    name: "",
+    nick_name: "",
+    dob: "",
+    image: null,
+    instagram: "",
+    facebook: "",
+    snapchat: "",
+    phoneNumber: "",
+    likes: "",
+    dislikes: "",
+    bestMoment: "",
+    OurBestMemory: "",
+    confession: "",
+  });
+  const imageURL = () => {
+    <CloudinaryContext
+      cloudName={process.env.cloudName}
+      apiKey={process.env.apiKey}
+      apiSecret={process.env.apiSecret}
+    >
+      <Image publicId={slamData.image} width="300" height="300" crop="fill" />
+    </CloudinaryContext>;
+    
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(slamData);
+    console.log(user);
+    imageURL();
+    // const response = await fetch(
+    //   "http://localhost:8000/digislam/apis/user",
+    //   {
+    //     method: "PUT",
+    //     headers: {
+    //       "Content-type": "application/json",
+    //       "Authorization": `Bearer ${user.token}`,
+    //     },
+    //     body: JSON.stringify(slamData),
+    //   }
+    // );
+    // const json = await response.json();
+    // if (response.ok) {
+    //   console.log(json);
+    // }
+    // if (!response.ok) {
+    //   console.log(json.error);
+    // }
   };
   return (
-    <>
-      <div className="TemplateHolder">
-        <div className="row-1">
-          <div className="personalQuestions">
-            <input type="text" placeholder="Your Name" />
-            <input type="text" placeholder="What Your Friends Call You" />
-          </div>
-          <div className="imageinputBox" onClick={handleImageInput}>
-            <input
-              className="inputImage"
-              type="file"
-              id="activeImage"
-              accept="image/*"
-              placeholder="Choose an image"
-            />
-            <img src={HolderImage} height={120} alt="HolderImage" />
-            <h3>Your Awesome Image</h3>
-          </div>
+    <div className="slamHolder">
+      <header>
+        <img src={TempImg3} alt="image1" height={200} />
+        <p className="heading">
+          "A friend knows the truth and the pain that you hide from the rest of
+          the world."
+        </p>
+      </header>
+
+      <form className="slamForm" onSubmit={handleSubmit}>
+        <div className="row-1 row">
+          <section>
+            <div>
+              <label for="name">Your Sweet Name</label>
+              <input
+                type="text"
+                onChange={(e) =>
+                  setSlamData({ ...slamData, name: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <div
+                className="image-input"
+                onClick={() => document.querySelector("#image").click()}
+              >
+                {slamData.image === null ? (
+                  <h1>+ Your Awesome Image</h1>
+                ) : (
+                  <img height={200} src={slamData.image} alt="imagee" />
+                )}
+              </div>
+              <input
+                id="image"
+                type="file"
+                accept="image/*"
+                onChange={(e) =>
+                  setSlamData({
+                    ...slamData,
+                    image: e.target.files[0],
+                  })
+                }
+              />
+            </div>
+          </section>
+          <section>
+            <div>
+              <label for="name">Your Friends Call You</label>
+              <input
+                type="text"
+                onChange={(e) =>
+                  setSlamData({ ...slamData, nick_name: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label for="name">Your Birthday</label>
+              <input
+                type="date"
+                onChange={(e) =>
+                  setSlamData({
+                    ...slamData,
+                    dob: e.target.value,
+                  })
+                }
+              />
+            </div>
+          </section>
         </div>
-      </div>
-    </>
+        <div className="row-2 row">
+          <section>
+            <div className="image-row">
+              <div>
+                <div>
+                  <label for="name">Your Instagram Id</label>
+                  <input
+                    type="text"
+                    onChange={(e) =>
+                      setSlamData({ ...slamData, instagram: e.target.value })
+                    }
+                  />
+                </div>
+                <div>
+                  <label for="name">Your Facebook Id</label>
+                  <input
+                    type="text"
+                    onChange={(e) =>
+                      setSlamData({ ...slamData, facebook: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+              <div>
+                <div>
+                  <label for="name">Your Snap Id</label>
+                  <input
+                    type="text"
+                    onChange={(e) =>
+                      setSlamData({ ...slamData, snapchat: e.target.value })
+                    }
+                  />
+                </div>
+                <div>
+                  <label for="name">I Can Ring You At</label>
+                  <input
+                    type="Number"
+                    value={slamData.phoneNumber}
+                    onChange={(e) =>
+                      setSlamData({ ...slamData, phoneNumber: e.target.value })
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <img src={TempImg2} height={200} alt="image2" className="image" />
+          </section>
+        </div>
+        <div className="row-3 row">
+          <section>
+            <div>
+              <label>One Thing You Like About Me</label>
+              <textarea
+                value={slamData.likes}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, likes: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label>One Thing You Want Me To Improve</label>
+              <textarea
+                value={slamData.dislikes}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, dislikes: e.target.value })
+                }
+              />
+            </div>
+          </section>
+        </div>
+        <div className="row-4 row">
+          <section>
+            <div>
+              <label>The best moment of your life</label>
+              <textarea
+                value={slamData.bestMoment}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, bestMoment: e.target.value })
+                }
+              />
+            </div>
+            <div>
+              <label>Our best memory together</label>
+              <textarea
+                value={slamData.OurBestMemory}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, OurBestMemory: e.target.value })
+                }
+              />
+            </div>
+          </section>
+        </div>
+        <div className="row-5 row">
+          <section>
+            <div>
+              <label>Anything you want me to tell me</label>
+              <textarea
+                value={slamData.confession}
+                onChange={(e) =>
+                  setSlamData({ ...slamData, confession: e.target.value })
+                }
+              />
+              <button>Submit</button>
+            </div>
+            <img src={TempImg1} height={200} alt="image3" className="image" />
+          </section>
+        </div>
+      </form>
+    </div>
   );
 };
 

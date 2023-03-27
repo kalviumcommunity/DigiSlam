@@ -1,36 +1,48 @@
-import React from "react";
-import profileImage from "./assets/profile_pic.jpg";
+import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Cover from "./Cover";
+import axios from "axios";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 const YourBook = () => {
+  const { user } = useAuthContext().user;
+  const [slams, setSlams] = useState();
+
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`http://localhost:8000/digislam/apis/users/${user._id}`)
+        .then((res) => {
+          setSlams(res.data.slams);
+          console.log(res.data.slams);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+  }, [user]);
+
+  const handleClick = () => {
+    navigator.clipboard.writeText("http://localhost:3000/temp1");
+    toast("Link Copied!", { className: "my-toast-body" });
+    console.log(user);
+  };
   return (
     <>
-      <button className="sendToFriendsButton">Send to your friends 🤘</button>
-      <div className="gridContainer">
-        <div className="grid-book-element">
-          <div className="ImageHolder">
-            <img src={profileImage} height={80} alt="displayImage" />
-            <h1>Spoidy</h1>
-          </div>
+      <ToastContainer />
+      <button className="sendToFriendsButton" onClick={handleClick}>
+        COPY LINK!
+      </button>
+      {slams ? (
+        <div className="gridContainer">
+          {slams.map((slam) => {
+            return <Cover data={{ slam }} />;
+          })}
         </div>
-        <div className="grid-book-element">
-          <div className="ImageHolder">
-            <img src={profileImage} height={80} alt="displayImage" />
-            <h1>Teddy</h1>
-          </div>
-        </div>
-        <div className="grid-book-element">
-          <div className="ImageHolder">
-            <img src={profileImage} height={80} alt="displayImage" />
-            <h1>Prad</h1>
-          </div>
-        </div>
-        <div className="grid-book-element">
-          <div className="ImageHolder">
-            <img src={profileImage} height={80} alt="displayImage" />
-            <h1>Golu</h1>
-          </div>
-        </div>
-      </div>
+      ) : (
+        <h2>No Data Found</h2>
+      )}
     </>
   );
 };

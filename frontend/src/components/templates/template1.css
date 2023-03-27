@@ -1,60 +1,204 @@
-html {
-    padding: 15px;
-    background-color: hotpink;
+/* Giving default style to all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.TemplateHolder {
-    box-sizing: border-box;
-    padding: 5%;
-    background-color: #D6A3FB;
-    border-radius: 5pc;
+body {
+    width: 100%;
     min-height: 100vh;
 }
 
-.inputImage {
+/* Defining the style of form. */
+.slamHolder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #e6e0e0;
+    padding: 1em;
+    color: #82486C;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.heading {
+    font-size: 48px;
+    text-align: center;
+}
+
+form {
+    height: 100%;
+    width: 100%;
+}
+
+/* Styling the comonents inside form */
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 3em;
+}
+
+.row section {
+    border-radius: 4px;
+    box-shadow: -4px 4px 25px #82486cc4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60vh;
+    width: 35vw;
+    background-color: #F6B9E0;
+}
+
+.row section div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 5px;
+}
+
+.row-2 section {
+    width: 85%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.row-2 section>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60%;
+}
+
+.row-3 section {
+    width: 85%;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.row-3 section>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 30vh;
+}
+
+.row-4 section {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.row-4 section>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40vh;
+}
+
+.row-5 section {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.row-5 section>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40vh;
+}
+
+/* miscelleneous styling */
+input[type=file] {
     display: none;
 }
 
-.imageinputBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    flex-direction: column;
-    width: 35vh;
-    height: 30vh;
-    background-color: #ABF62D;
+.image-input {
+    align-self: center;
+    border: 2px dashed white;
+    width: 100%;
+    height: 28vh;
     cursor: pointer;
-    border-radius: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+label {
     font-size: large;
 }
 
-.personalQuestions input{
-    width: 20vw;
-    height: 2vh;
-    padding: 15px;
-    font-size: 18px;
+.slamHolder input {
+    font-size: 1.25em;
+    color: #82486C;
+    width: 30vh;
+    height: 4vh;
+    background-color: #fef2f0;
     border: none;
-    border-radius: 5px;
-    background-color: #ABF62D;
-    color: darkblue;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    outline: 0;
+    padding: 5px;
 }
 
-.personalQuestions input::placeholder {
-    color: blue;
-    text-align: center;
-    font-weight: 300;
+input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #82486C;
 }
 
-.personalQuestions {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 5pc;
+textarea {
+    min-width: 40vh;
+    min-height: 20vh;
+    color: #82486C;
+    padding: 5px;
+    font-size: 24px;
 }
 
-.row-1 {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+textarea:focus {
+    outline: none;
+    border: none;
+}
+
+input[type=Number]::-webkit-inner-spin-button,
+input[type=Number]::-webkit-outer-spin-button {
+    display: none;
+}
+
+button {
+    height: 4vh;
+    width: 10vw;
+    font-size: larger;
+    border-radius: 3px;
+    border: none;
+    box-shadow: 3px 3px 5px #000;
+    background-color: #ffffff;
+}
+
+button:active {
+    transform: translate3d(1px, 2px, 3px);
+}
+
+
+/* Styling the output page */
+.outputTemplate {
+    min-height: 100vh;
+    width: 100%;
+    background-color: #F6B9E0;
 }

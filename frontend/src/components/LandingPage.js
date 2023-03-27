@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import landingPageBackground from "./assets/LoginBG.jpg";
-import Footer from "./Footer";
 
 const LandingPage = () => {
   return (
@@ -17,10 +16,9 @@ const LandingPage = () => {
           Re-live Your <span>Memories,</span>
           <br />A Different Way
         </p>
-        <Link to="/sign_up">
+        <Link to="/login">
           <button className="navigateToLoginPageButton">Get Started</button>
         </Link>
-        <Footer />
       </div>
     </>
   );
