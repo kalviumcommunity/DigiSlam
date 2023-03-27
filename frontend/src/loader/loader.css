@@ -3,5 +3,15 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #012;
+}
+
+.landingPageBgImg {
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.4);
 }

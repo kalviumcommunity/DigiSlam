@@ -7,7 +7,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 
 const YourBook = () => {
   const { user } = useAuthContext().user;
-  const [slams, setSlams] = useState();
+  const [slams, setSlams] = useState([]);
 
   useEffect(() => {
     if (user) {
@@ -34,7 +34,7 @@ const YourBook = () => {
       <button className="sendToFriendsButton" onClick={handleClick}>
         COPY LINK!
       </button>
-      {slams ? (
+      {slams.length ? (
         <div className="gridContainer">
           {slams.map((slam) => {
             return <Cover data={{ slam }} />;

@@ -79,7 +79,7 @@ const Sign = () => {
   return (
     <>
       <SignUpPage />
-      <ToastContainer />
+      <ToastContainer autoClose="1000"/>
     </>
   );
 };
