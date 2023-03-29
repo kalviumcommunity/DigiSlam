@@ -1,13 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./template1.css";
 import TempImg1 from "../assets/friendsImg1.png";
 import TempImg2 from "../assets/friendsImg2.png";
 import TempImg3 from "../assets/friendsImg3.png";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { CloudinaryContext, Image } from "cloudinary-react";
+import { toast, ToastContainer } from "react-toastify";
 
 const Temp1 = () => {
   const { user } = useAuthContext();
+  const navigate = useNavigate();
   const [slamData, setSlamData] = useState({
     name: "",
     nick_name: "",
@@ -23,39 +25,27 @@ const Temp1 = () => {
     OurBestMemory: "",
     confession: "",
   });
-  const imageURL = () => {
-    <CloudinaryContext
-      cloudName={process.env.cloudName}
-      apiKey={process.env.apiKey}
-      apiSecret={process.env.apiSecret}
-    >
-      <Image publicId={slamData.image} width="300" height="300" crop="fill" />
-    </CloudinaryContext>;
-    
-  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(slamData);
-    console.log(user);
-    imageURL();
-    // const response = await fetch(
-    //   "http://localhost:8000/digislam/apis/user",
-    //   {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-type": "application/json",
-    //       "Authorization": `Bearer ${user.token}`,
-    //     },
-    //     body: JSON.stringify(slamData),
-    //   }
-    // );
-    // const json = await response.json();
-    // if (response.ok) {
-    //   console.log(json);
-    // }
-    // if (!response.ok) {
-    //   console.log(json.error);
-    // }
+    const response = await fetch(
+      `http://localhost:8000/digislam/apis/users/${user.user._id}`,
+      {
+        method: "PUT",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(slamData),
+      }
+    );
+    const json = await response.json();
+    if (response.ok) {
+      console.log(json);
+      toast.success("Submitted Succesfully", { className: "my-toast-body" });
+      setTimeout(() => {
+        navigate("/main", { replace: true });
+      }, 3000);
+    }
+    if (!response.ok) {
+      console.log(json.error);
+    }
   };
   return (
     <div className="slamHolder">
@@ -97,7 +87,7 @@ const Temp1 = () => {
                 onChange={(e) =>
                   setSlamData({
                     ...slamData,
-                    image: e.target.files[0],
+                    image: URL.createObjectURL(e.target.files[0]),
                   })
                 }
               />
@@ -239,4 +229,13 @@ const Temp1 = () => {
   );
 };
 
-export default Temp1;
+const Template1 = () => {
+  return (
+    <>
+      <Temp1 />
+      <ToastContainer />
+    </>
+  );
+};
+
+export default Template1;

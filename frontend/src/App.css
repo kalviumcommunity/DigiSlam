@@ -343,33 +343,6 @@ html {
     color: blue;
 }
 
-footer {
-    align-self: center;
-    height: 5vh;
-    position: absolute;
-    bottom: 0;
-    color: rgb(0, 81, 255);
-    background-color: #d6d2d2;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-footer h3 {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.footerNavigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 40px;
-    width: 10%;
-    height: 5vh;
-}
-
 a {
     text-decoration: none;
     text-align: center;
@@ -385,6 +358,33 @@ a {
     width: 30px;
     background-color: transparent;
     box-shadow: none;
+}
+
+::selection {
+    background-color: transparent;
+    color: inherit;
+}
+
+.not-found {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.not-found h1 {
+    font-size: 72px;
+    text-align: center;
+    color: #ddff00;
+    -webkit-text-stroke: 5px #000563;
+}
+
+.not-found p {
+    font-size: 48px;
+    text-align: center;
+    color: #3dff3d7d;
+    -webkit-text-stroke: 2px #00ffae;
 }
 
 /* Responsiveness */

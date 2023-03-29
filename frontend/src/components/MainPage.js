@@ -5,13 +5,30 @@ import YourBook from "./YourBook";
 import Templates from "./Templates";
 import Loader from "../loader/Loader";
 import { useLogout } from "../components/hooks/useLogout";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 
 const MainPage = () => {
-  const Username = JSON.parse(localStorage.getItem("user"));
+  const { user } = useAuthContext();
   const [activeComponent, setActiveComponent] = useState(<YourSlams />);
   const [isLoading, setIsLoading] = useState(true);
   const { logout } = useLogout();
+  const [timer, setTimer] = useState(5);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) {
+      const interval = setInterval(() => {
+        setTimer((seconds) => seconds - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [user]);
+  useEffect(() => {
+    if (timer === 0) {
+      navigate("/login", { replace: true });
+    }
+  }, [timer, navigate]);
+
   const handleClick = (e) => {
     let buttons = document.getElementsByClassName("button");
     for (let i = 0; i < buttons.length; i++) {
@@ -42,18 +59,17 @@ const MainPage = () => {
         src={landingPageBackground}
         alt="Landing_page_BG_Image"
       />
-      {Username ? (
+      {user ? (
         <>
           <div className="mainPageContainer">
             <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
             <div className="usernameHolder">
-              {Username && (
+              {user && (
                 <h1 className="projectTitle Username">
-                  Hey Ayush
-                  {/* {Username && Username.user.username} */}
+                  Hey {user && user.user.username}
                 </h1>
               )}
-              {Username && <button onClick={logout}>LOG OUT</button>}
+              {user && <button onClick={logout}>LOG OUT</button>}
             </div>
           </div>
           <div className="navBar">
@@ -67,12 +83,9 @@ const MainPage = () => {
           <div className="componentHolder">{activeComponent}</div>
         </>
       ) : (
-        <div className="loggedOut">
-          <h1 className="projectTitle">DiGiSLAM</h1>
-          <h3>You are logged out</h3>
-          <Link to="/login">
-            <button>NAVIGATE TO LOGIN PAGE</button>
-          </Link>
+        <div className="loggedOut not-found">
+          <h2 className="projectTitle">DiGiSLAM</h2>
+          <p>You are logged out, Redirecting...</p>
         </div>
       )}
     </>

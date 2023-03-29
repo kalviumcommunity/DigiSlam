@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignUp = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
@@ -26,7 +28,10 @@ export const useSignUp = () => {
     if (response.ok) {
       //save the user to local storage
       localStorage.setItem("user", JSON.stringify(json));
-      toast.success("Signed Up Succesful.", { className: "my-toast-body" });
+      toast.success("Signed Up Succesfully.", { className: "my-toast-body" });
+      setTimeout(() => {
+        navigate("/main", { replace: true });
+      }, 3000);
       //updating auth context
       dispatch({ type: "LOGIN", payload: json });
       setLoading(false);
