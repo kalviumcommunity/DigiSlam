@@ -33,7 +33,7 @@ const LoginPage = () => {
         alt="Landing_page_BG_Image"
       />
       {/* {Error !== "" && toast.error(Error)} */}
-      <ToastContainer autoClose="1000" />
+      <ToastContainer autoClose="2000" />
       <form className="loginContainer" onSubmit={handleSubmit}>
         <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
         <div className="loginContentHolder">

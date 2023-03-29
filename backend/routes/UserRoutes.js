@@ -10,6 +10,7 @@ const createToken = (_id) => {
 //appending slam data
 router.put("/:_id", async (req, resp) => {
   const { _id } = req.params;
+  const authorization = req.header
   const updateSlam = req.body;
   try {
     const user = await User.findByIdAndUpdate(

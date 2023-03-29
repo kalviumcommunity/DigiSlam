@@ -24,7 +24,7 @@ const YourBook = () => {
   }, [user]);
 
   const handleClick = () => {
-    navigator.clipboard.writeText("http://localhost:3000/temp1");
+    navigator.clipboard.writeText("http://localhost:3000/template1");
     toast("Link Copied!", { className: "my-toast-body" });
     console.log(user);
   };

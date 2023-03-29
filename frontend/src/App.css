@@ -213,8 +213,9 @@ html {
 
 .Username {
     font-size: 32px;
-    -webkit-text-stroke: 0.005px #DBFF00;
-    color: #185fc9;
+    -webkit-text-stroke: 1.5px #02fff2;
+    color: #DBFF00;
+    font-family: 'Litila One', cursive;
 }
 
 .usernameHolder {

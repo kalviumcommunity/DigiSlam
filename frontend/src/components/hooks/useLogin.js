@@ -30,10 +30,10 @@ export const useLogin = () => {
     if (response.ok) {
       //save the user to local storage
       localStorage.setItem("user", JSON.stringify(json));
-      toast.success("Login Succesful", { className: "my-toast-body" });
+      toast("Login Succesful", { className: "my-toast-body" });
       setTimeout(() => {
         navigate("/main", { replace: true });
-      }, 3000);
+      }, 3500);
       //updating auth context
       dispatch({ type: "LOGIN", payload: json });
       setLoading(false);
