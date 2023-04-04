@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
-import Loader from "../loader/Loader";
+import Loader from "./loader/Loader"
 
 const NotFound = () => {
   const { user } = useAuthContext();
@@ -36,7 +36,7 @@ const NotFound = () => {
         alt="Landing_page_BG_Image"
       />
       <div className="not-found">
-        <h1 className="not-found-header">404 - Page not found</h1>
+        <h1>404 - Page not found</h1>
         <p>
           Redirecting you to {user ? "main" : "login"} page in {timer}
         </p>

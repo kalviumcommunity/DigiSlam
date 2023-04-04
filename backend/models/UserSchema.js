@@ -27,19 +27,10 @@ const UserSchema = new Schema({
     items: {
       type: [
         {
-          name: String,
-          nick_name: String,
-          dob: String,
-          image: String,
-          instagram: String,
-          facebook: String,
-          snapchat: String,
-          phoneNumber: Number,
-          likes: String,
-          dislikes: String,
-          bestMoment: String,
-          OurBestMemory: String,
-          confession: String,
+          image: {
+            public_id: String,
+            url: String,
+          },
         },
       ],
       default: [{}],
