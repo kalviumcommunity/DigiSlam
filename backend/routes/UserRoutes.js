@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("../models/UserSchema");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const cloudinary = require("../utils/cloudinary");
 const SECRET = process.env.SECRET;
 const createToken = (_id) => {
   return jwt.sign({ _id }, SECRET, { expiresIn: "365d" });
@@ -10,11 +11,21 @@ const createToken = (_id) => {
 //appending slam data
 router.put("/:_id", async (req, resp) => {
   const { _id } = req.params;
-  const updateSlam = req.body;
+  const { image } = req.body;
   try {
+    const result = await cloudinary.uploader.upload(image, {
+      folder: "digislam",
+      width: 100,
+      crop: "scale",
+    });
+
     const user = await User.findByIdAndUpdate(
       _id,
-      { $push: { slams: updateSlam } },
+      {
+        $push: {
+          slams: { public_id: result.public_id, url: result.secure_url },
+        },
+      },
       { new: true }
     );
     if (!user) {

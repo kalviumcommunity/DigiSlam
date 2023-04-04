@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import { Link } from "react-router-dom";
-import Loader from "../loader/Loader";
+import Loader from "./loader/Loader";
 import { useLogin } from "./hooks/useLogin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -32,40 +32,42 @@ const LoginPage = () => {
         src={landingPageBackground}
         alt="Landing_page_BG_Image"
       />
-      {/* {Error !== "" && toast.error(Error)} */}
-      <ToastContainer autoClose="1000" />
-      <form className="loginContainer" onSubmit={handleSubmit}>
-        <h1 className="projectTitle projectTitleInAllPages">DiGiSLAM</h1>
-        <div className="loginContentHolder">
-          <h1>LOG IN TO DIGISLAM</h1>
+      <ToastContainer autoClose="2000" />
+      <h1 className="title">DiGiSLAM</h1>
+      <form className="form" onSubmit={handleSubmit}>
+        <h1>LOGIN</h1>
+        <div className="form-input-holder">
+          <label>Email</label>
           <input
             placeholder="Please Enter Your Email"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
+        </div>
+        <div className="form-input-holder">
+          <label>Password</label>
           <input
             placeholder="Please Enter Your Password"
             type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
-          <div className="showPassword">
-            <input
-              type="checkbox"
-              onClick={() => setShowPassword(!showPassword)}
-            />
-            <label>Show Password</label>
-          </div>
-          <button disabled={loading}>LOG IN</button>
-          <p>
-            Not a slammer?{" "}
-            <Link to="/sign_up">
-              <span>Sign Up</span>
-            </Link>{" "}
-            here.
-          </p>
         </div>
+        <div className="show-password">
+          <input
+            type="checkbox"
+            onClick={() => setShowPassword(!showPassword)}
+          />
+          <p>Show Password</p>
+        </div>
+        <button disabled={loading}>LOG IN</button>
+        <p className="navigation-para">
+          New to digislam?{" "}
+          <Link to="/sign_up">
+            <span>Sign up</span>
+          </Link>{" "}
+        </p>
       </form>
     </>
   );
