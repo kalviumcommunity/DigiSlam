@@ -22,7 +22,6 @@ const YourBook = () => {
         .get(`http://localhost:8000/digislam/apis/users/${user._id}`)
         .then((res) => {
           setSlams(res.data.slams);
-          console.log(res.data.slams);
         })
         .catch((e) => {
           console.log(e);
@@ -33,7 +32,7 @@ const YourBook = () => {
     <>
       <ToastContainer autoClose="2000" />
       {slams.length ? (
-        <div className="gridContainer">
+        <div className="slam-container">
           {slams.map((slam) => {
             return <Card data={{ slam }} />;
           })}

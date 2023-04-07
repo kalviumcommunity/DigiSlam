@@ -8,6 +8,7 @@ import Loader from "./components/loader/Loader";
 import Login from "./components/LoginPage";
 import NotFound from "./components/NotFound";
 import BasicTemplate from "./components/templates/BasicTemplate";
+import BasicOutput from "./components/output/BasicOutput";
 import { useAuthContext } from "./components/hooks/useAuthContext";
 
 function App() {
@@ -23,8 +24,9 @@ function App() {
         <Route path="/sign_up" element={<Sign />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/load" element={<Loader />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/basictemp/:id" element={<BasicTemplate />} />
+        <Route path="/basic_out/:user_id/:id" element={<BasicOutput />}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

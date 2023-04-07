@@ -35,7 +35,7 @@ const LoginPage = () => {
       <ToastContainer autoClose="2000" />
       <h1 className="title">DiGiSLAM</h1>
       <form className="form" onSubmit={handleSubmit}>
-        <h1>LOGIN</h1>
+        <h1 style={{fontSize: "36px"}}>LOGIN</h1>
         <div className="form-input-holder">
           <label>Email</label>
           <input

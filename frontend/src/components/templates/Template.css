@@ -37,6 +37,10 @@
     font-size: large;
 }
 
+.phone::-webkit-inner-spin-button,.phone::-webkit-outer-spin-button{
+    display: none;
+}
+
 /* placing the row and the row-content */
 
 .row {
@@ -57,13 +61,16 @@
     min-height: 15vh;
 }
 
+.row-content label{
+    font-size: 32px;
+}
 
 .row-content textarea {
     width: 30vw;
     height: 15vh;
     font-family: 'Lilita One', cursive;
     padding: 5pt;
-    font-size: large;
+    font-size: xx-large;
 }
 
 .svg-field {

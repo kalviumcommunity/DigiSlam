@@ -5,8 +5,9 @@ import Loader from "./loader/Loader";
 import { useLogout } from "../components/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
-const MainPage = () => {
+const Main = () => {
   const { user } = useAuthContext();
   const [isLoading, setIsLoading] = useState(true);
   const { logout } = useLogout();
@@ -30,6 +31,12 @@ const MainPage = () => {
       setIsLoading(false);
     }, 1500);
   }, []);
+  function handleClick() {
+    toast.success("Copied!")
+    navigator.clipboard.writeText(
+      `http://localhost:3000/basictemp/${user.user._id}`
+    );
+  }
   return isLoading ? (
     <Loader />
   ) : (
@@ -44,15 +51,16 @@ const MainPage = () => {
           <div className="main-page-head">
             <h1 className="title">DiGiSLAM</h1>
             <div className="user-login-details">
-              <button className="logout-button" onClick={logout}>
+              <button className="main-page-button" onClick={logout}>
                 LOG OUT
+              </button>
+              <button className="main-page-button" onClick={handleClick}>
+                SEND +
               </button>
               <p>{user && `Hi ${user.user.username.split(" ")[0]} ✌`}</p>
             </div>
           </div>
-          <div className="main-page-container">
-            <YourBook />
-          </div>
+          <YourBook />
         </>
       ) : (
         <div className="logged-out">
@@ -60,6 +68,15 @@ const MainPage = () => {
           <p>You are logged out, Redirecting...</p>
         </div>
       )}
+    </>
+  );
+};
+
+const MainPage = () => {
+  return (
+    <>
+      <Main />
+      <ToastContainer autoClose="2000" />
     </>
   );
 };

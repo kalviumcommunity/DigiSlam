@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const User = require("../models/UserSchema");
 const router = express.Router();
@@ -11,7 +12,19 @@ const createToken = (_id) => {
 //appending slam data
 router.put("/:_id", async (req, resp) => {
   const { _id } = req.params;
-  const { image } = req.body;
+  const {
+    unique_id,
+    name,
+    instagram,
+    phone,
+    image,
+    biggest_fear,
+    favourite_song,
+    accomplishment,
+    dislike,
+    goodness,
+    improve,
+  } = req.body;
   try {
     const result = await cloudinary.uploader.upload(image, {
       folder: "digislam",
@@ -22,8 +35,20 @@ router.put("/:_id", async (req, resp) => {
     const user = await User.findByIdAndUpdate(
       _id,
       {
-        $push: {
-          slams: { public_id: result.public_id, url: result.secure_url },
+        $addToSet: {
+          slams: {
+            unique_id,
+            name,
+            instagram,
+            phone,
+            image: result.secure_url,
+            biggest_fear,
+            favourite_song,
+            accomplishment,
+            dislike,
+            goodness,
+            improve,
+          },
         },
       },
       { new: true }
