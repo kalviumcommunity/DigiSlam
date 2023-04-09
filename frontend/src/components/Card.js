@@ -18,6 +18,7 @@ const Card = (props) => {
         src={data.slam.image}
         className="slam-image"
         height={200}
+        width={150}
         style={{
           borderRadius: "10px",
         }}
