@@ -14,7 +14,7 @@ export const useLogin = () => {
     setLoading(true);
 
     const response = await fetch(
-      "http://localhost:8000/digislam/apis/users/login",
+      process.env.REACT_APP_LOGIN,
       {
         method: "POST",
         headers: { "Content-type": "application/json" },

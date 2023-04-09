@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import "./Template.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,8 +17,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const Template = () => {
   const { user } = useAuthContext();
-  const uuidRegex = /([a-f\d]{24})/i;
-  const submittingUser = window.location.href.match(uuidRegex)[0];
+  const routeParam = useParams();
+  const { id } = routeParam;
   const navigate = useNavigate();
   const [img, setImg] = useState("");
   const [Data, setData] = useState({
@@ -54,14 +54,13 @@ const Template = () => {
       toast.error("Please Enter Your Name");
     } else {
       toast.warn("Submitting...");
-      const response = await fetch(
-        `http://localhost:8000/digislam/apis/users/${submittingUser}`,
-        {
-          method: "PUT",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(Data),
-        }
-      );
+      const response = await fetch(process.env.REACT_APP_API_URL + id, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(Data),
+      });
 
       const data = response.json();
 
@@ -154,7 +153,9 @@ const Template = () => {
           </div>
           <div className="svg-field">
             <img src={upload_img_illu} height={200} alt="upload_img" />
-            <p style={{ fontSize: "32px" }}>Please Upload A Clear Picture Of Yours: </p>
+            <p style={{ fontSize: "32px" }}>
+              Please Upload A Clear Picture Of Yours:{" "}
+            </p>
             {img === "" ? (
               <div
                 className="input-image"
@@ -171,8 +172,8 @@ const Template = () => {
               <div className="input-image">
                 <img
                   src={img}
-                  height={180}
-                  width={120}
+                  height={225}
+                  width={175}
                   alt="uploaded_image"
                   style={{ cursor: "pointer" }}
                   onClick={() => image_box.click()}
@@ -232,7 +233,7 @@ const Template = () => {
             <img src={hate_illu} alt="hate" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
-                One Thing You Hate The Most
+                Thing You Hate The Most
               </label>
               <textarea
                 value={Data.dislike}
@@ -243,7 +244,7 @@ const Template = () => {
           <div className="svg-field">
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
-                One Thing You Like About Me
+                Things You Like About Me
               </label>
               <textarea
                 value={Data.goodness}
@@ -256,7 +257,7 @@ const Template = () => {
             <img src={improve_illu} height={200} alt="improve" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
-                One Thing You Want Me To Work Upon
+                Things You Want Me To Work Upon
               </label>
               <textarea
                 value={Data.improve}

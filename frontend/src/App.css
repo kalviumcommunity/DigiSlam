@@ -151,7 +151,8 @@ input[type="checkbox"] {
     align-items: center;
     justify-content: space-evenly;
     font-family: 'Lilita One', cursive;
-    width: 35vw;
+    min-width: 35vw;
+    gap: 2vh;
 }
 
 .user-login-details p {
