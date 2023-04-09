@@ -237,7 +237,7 @@ input[type="checkbox"] {
 .slam-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    margin: 5% 5%;
+    margin: 5% 10px;
     height: 70vh;
     gap: 10vh;
     padding: 5vh;
@@ -251,14 +251,14 @@ input[type="checkbox"] {
 
 .slam-card {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     width: 25vw;
     height: 25vh;
     background-color: rgba(0, 0, 255, 0.9);
     box-shadow: 0 0 5px 5px #fefefed2;
     cursor: pointer;
-    padding: 5px;
+    padding: 1vw;
     border-radius: 20px;
 }
 

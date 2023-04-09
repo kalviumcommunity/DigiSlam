@@ -12,6 +12,8 @@ app.use(express.urlencoded({ limit: "10mb", extended: true }));
 app.use(cors());
 app.use("/digislam/apis/users", UserRoutes);
 
+mongoose.set("strictQuery", false);
+
 mongoose
   .connect(MONGODB_URL)
   .then(() => {
