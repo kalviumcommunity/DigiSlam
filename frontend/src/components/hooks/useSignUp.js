@@ -3,22 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuthContext } from "./useAuthContext";
 
+
 export const useSignUp = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(null);
   const { dispatch } = useAuthContext();
-
   const signup = async (username, email, password) => {
     setLoading(true);
 
-    const response = await fetch(
-      "http://localhost:8000/digislam/apis/users/signup",
-      {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
-      }
-    );
+    const response = await fetch(process.env.REACT_APP_SIGN_UP, {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify({ username, email, password }),
+    });
     const json = await response.json();
 
     if (!response.ok) {

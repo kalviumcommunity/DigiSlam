@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import "./Template.css";
+import { ToastContainer, toast } from "react-toastify";
 import friendsUnderTree from "../assets/friends_under_tree.svg";
 import upload_img_illu from "../assets/image_post.svg";
 import fav_song_illu from "../assets/fav_song.svg";
@@ -10,11 +13,16 @@ import like_illu from "../assets/like_me.svg";
 import improve_illu from "../assets/improve.svg";
 import phone_logo from "../assets/call_logo.webp";
 import insta_logo from "../assets/insta_logo.png";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-const BasicTemplate = () => {
-  const submittingUser = window.location.href.split("/")[4];
+const Template = () => {
+  const { user } = useAuthContext();
+  const routeParam = useParams();
+  const { id } = routeParam;
+  const navigate = useNavigate();
   const [img, setImg] = useState("");
   const [Data, setData] = useState({
+    unique_id: uuidv4(),
     name: "",
     instagram: "",
     phone: "",
@@ -40,9 +48,34 @@ const BasicTemplate = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(Data);
+    if (Data.name === "") {
+      toast.error("Please Enter Your Name");
+    } else {
+      toast.warn("Submitting...");
+      const response = await fetch(process.env.REACT_APP_API_URL + id, {
+        method: "PUT",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(Data),
+      });
+
+      const data = response.json();
+
+      if (response.ok) {
+        toast.success("Submitted Succesfully.");
+        console.log(data);
+        setTimeout(() => {
+          navigate(user !== null ? "/main" : "/login", { replace: true });
+        }, 3500);
+      }
+      if (!response.ok) {
+        toast.error(data.error);
+        console.log(data);
+      }
+    }
   };
 
   const handleFileUpload = async (e) => {
@@ -56,7 +89,7 @@ const BasicTemplate = () => {
     <>
       <header className="header">
         <p>THE STORY OF MY LIFE</p>
-        <img src={friendsUnderTree} height={150} alt="friends" />
+        <img src={friendsUnderTree} height={200} alt="friends" />
       </header>
       <form className="form-container" onSubmit={handleSubmit}>
         <div className="row">
@@ -65,7 +98,6 @@ const BasicTemplate = () => {
               <label style={{ fontSize: "32px" }}>Name</label>
               <input
                 type="text"
-                required
                 style={{
                   height: "5vh",
                   width: "20vw",
@@ -85,7 +117,7 @@ const BasicTemplate = () => {
               </span>
               <input
                 type="Number"
-                required
+                className="phone"
                 style={{
                   height: "5vh",
                   width: "20vw",
@@ -104,7 +136,6 @@ const BasicTemplate = () => {
               </span>
               <input
                 type="text"
-                required
                 style={{
                   height: "5vh",
                   width: "20vw",
@@ -114,21 +145,26 @@ const BasicTemplate = () => {
                   fontFamily: "'Lilita One', cursive",
                 }}
                 value={Data.instagram}
-                onChange={(e) => setData({ ...Data, instagram: e.target.value })}
+                onChange={(e) =>
+                  setData({ ...Data, instagram: e.target.value })
+                }
               />
             </div>
           </div>
           <div className="svg-field">
             <img src={upload_img_illu} height={200} alt="upload_img" />
-            <p>Please Upload A Clear Picture Of Yours: </p>
+            <p style={{ fontSize: "32px" }}>
+              Please Upload A Clear Picture Of Yours:{" "}
+            </p>
             {img === "" ? (
               <div
                 className="input-image"
                 style={{ cursor: "pointer" }}
                 onClick={() => image_box.click()}
               >
-                <p>
+                <p style={{ fontSize: "32px" }}>
                   + <br />
+                  <br />
                   Your Awesome Image
                 </p>
               </div>
@@ -136,8 +172,8 @@ const BasicTemplate = () => {
               <div className="input-image">
                 <img
                   src={img}
-                  height={180}
-                  width={120}
+                  height={225}
+                  width={175}
                   alt="uploaded_image"
                   style={{ cursor: "pointer" }}
                   onClick={() => image_box.click()}
@@ -197,7 +233,7 @@ const BasicTemplate = () => {
             <img src={hate_illu} alt="hate" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
-                One Thing You Hate The Most
+                Thing You Hate The Most
               </label>
               <textarea
                 value={Data.dislike}
@@ -208,7 +244,7 @@ const BasicTemplate = () => {
           <div className="svg-field">
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
-                One Thing You Like About Me
+                Things You Like About Me
               </label>
               <textarea
                 value={Data.goodness}
@@ -221,7 +257,7 @@ const BasicTemplate = () => {
             <img src={improve_illu} height={200} alt="improve" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
-                One Thing You Want Me To Work Upon
+                Things You Want Me To Work Upon
               </label>
               <textarea
                 value={Data.improve}
@@ -232,6 +268,15 @@ const BasicTemplate = () => {
         </div>
         <button>Submit</button>
       </form>
+    </>
+  );
+};
+
+const BasicTemplate = () => {
+  return (
+    <>
+      <Template />
+      <ToastContainer autoClose="2000" />
     </>
   );
 };

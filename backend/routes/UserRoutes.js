@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const User = require("../models/UserSchema");
 const router = express.Router();
@@ -8,22 +9,51 @@ const createToken = (_id) => {
   return jwt.sign({ _id }, SECRET, { expiresIn: "365d" });
 };
 
-//appending slam data
+// appending slam data
 router.put("/:_id", async (req, resp) => {
   const { _id } = req.params;
-  const { image } = req.body;
+  const {
+    unique_id,
+    name,
+    instagram,
+    phone,
+    image,
+    biggest_fear,
+    favourite_song,
+    accomplishment,
+    dislike,
+    goodness,
+    improve,
+  } = req.body;
   try {
-    const result = await cloudinary.uploader.upload(image, {
-      folder: "digislam",
-      width: 100,
-      crop: "scale",
-    });
+    let result = null;
+    if (image) {
+      result = await cloudinary.uploader.upload(image, {
+        folder: "digislam",
+        width: 100,
+        crop: "scale",
+      });
+    }
 
-    const user = await User.findByIdAndUpdate(
-      _id,
+    const user = await User.findOneAndUpdate(
+      { _id },
       {
-        $push: {
-          slams: { public_id: result.public_id, url: result.secure_url },
+        $addToSet: {
+          slams: {
+            unique_id,
+            name,
+            instagram,
+            phone,
+            image: result
+              ? result.secure_url
+              : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+            biggest_fear,
+            favourite_song,
+            accomplishment,
+            dislike,
+            goodness,
+            improve,
+          },
         },
       },
       { new: true }

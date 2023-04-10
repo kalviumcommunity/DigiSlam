@@ -27,13 +27,19 @@ const UserSchema = new Schema({
     items: {
       type: [
         {
-          image: {
-            public_id: String,
-            url: String,
-          },
+          unique_id: String,
+          name: String,
+          instagram: String,
+          phone: Number,
+          image: String,
+          biggest_fear: String,
+          favourite_song: String,
+          accomplishment: String,
+          dislike: String,
+          goodness: String,
+          improve: String,
         },
       ],
-      default: [{}],
     },
   },
 });

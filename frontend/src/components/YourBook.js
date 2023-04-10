@@ -7,25 +7,22 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import noData from "./assets/noSlams.svg";
 
 const YourBook = () => {
-  const { user } = useAuthContext().user;
+  const { user } = useAuthContext();
   const [slams, setSlams] = useState([]);
   const handleClick = () => {
-    navigator.clipboard.writeText(
-      `http://localhost:3000/basictemp/${user._id}`
-    );
+    navigator.clipboard.writeText(process.env.REACT_APP_COPY_URL + user.user._id);
     toast.success("Copied");
   };
 
   useEffect(() => {
     if (user) {
       axios
-        .get(`http://localhost:8000/digislam/apis/users/${user._id}`)
+        .get(process.env.REACT_APP_API_URL + user.user._id)
         .then((res) => {
           setSlams(res.data.slams);
-          console.log(res.data.slams);
         })
         .catch((e) => {
-          console.log(e);
+          console.log(e.message);
         });
     }
   }, [user]);
@@ -33,8 +30,8 @@ const YourBook = () => {
     <>
       <ToastContainer autoClose="2000" />
       {slams.length ? (
-        <div className="gridContainer">
-          {slams.map((slam) => {
+        <div className="slam-container">
+          {slams && slams.map((slam) => {
             return <Card data={{ slam }} />;
           })}
         </div>

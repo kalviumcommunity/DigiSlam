@@ -34,7 +34,7 @@ const SignUp = () => {
       />
       <h1 className="title">DiGiSLAM</h1>
       <form className="form" onSubmit={handleSubmit}>
-        <h1>SIGN UP</h1>
+        <h1 style={{fontSize: "36px"}}>CREATE ACCOUNT</h1>
         <div className="form-input-holder">
           <label>Name</label>
           <input
