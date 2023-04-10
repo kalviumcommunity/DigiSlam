@@ -6,7 +6,7 @@ import { useLogout } from "../components/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
-import { RxHamburgerMenu } from "react-icons/rx"
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Main = () => {
   const { user } = useAuthContext();
@@ -33,7 +33,7 @@ const Main = () => {
     }, 1500);
   }, []);
   function handleClick() {
-    toast.success("Copied!")
+    toast.success("Copied!");
     navigator.clipboard.writeText(
       `http://localhost:3000/basictemp/${user.user._id}`
     );
@@ -51,9 +51,12 @@ const Main = () => {
         <>
           <div className="main-page-head">
             <h1 className="title">DiGiSLAM</h1>
-            <RxHamburgerMenu className="hamburger" style={{
-              display: "none"
-            }}/>
+            <RxHamburgerMenu
+              className="hamburger"
+              style={{
+                display: "none",
+              }}
+            />
             <div className="user-login-details">
               <button className="main-page-button" onClick={logout}>
                 LOG OUT
