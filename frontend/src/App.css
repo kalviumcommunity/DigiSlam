@@ -400,9 +400,10 @@ input[type="checkbox"] {
     margin: 0 10%;
     font-size: small;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 10%;
     padding: 5%;
     position: fixed;
+    height: 75vh;
   }
 
   .form-input-holder label {
