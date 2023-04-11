@@ -34,7 +34,7 @@
 | Using the public folder to serve files          | ✔      | [-](#)                                                    |
 | Postman Use for Testing                         | ✔      | [-](#)                                                    |
 | Authentication                                  | ✔      | [-](#)                                                    |
-| Deployment                                      |        | [Digislam](https://digislam.pages.dev)                    |
+| Deployment                                      | ✔      | [Digislam](https://digislam.pages.dev)                    |
 
 © 2023 GitHub, Inc.
 
