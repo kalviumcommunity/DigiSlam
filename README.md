@@ -27,14 +27,14 @@
 | High-fid design for your application            | ✔      | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/3) |
 | ReactJS app initialization                      | ✔      | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/2) |
 | Application components created                  | ✔      | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/2) |
-| Application deployed                            | ✔      | [Digislam](digislam.pages.dev)                            |
+| Application deployed                            | ✔      | [Digislam](https://digislam.pages.dev)                    |
 | **Full-Stack**                                  | 👇     | 🔗                                                        |
 | IDE Setup                                       | ✔      | [-](#)                                                    |
 | NodeJs REPL                                     | ✔      | [-](#)                                                    |
 | Using the public folder to serve files          | ✔      | [-](#)                                                    |
 | Postman Use for Testing                         | ✔      | [-](#)                                                    |
 | Authentication                                  | ✔      | [-](#)                                                    |
-| Deployment                                      |        | [Digislam](digislam.pages.dev)                            |
+| Deployment                                      |        | [Digislam](https://digislam.pages.dev)                    |
 
 © 2023 GitHub, Inc.
 
