@@ -56,7 +56,7 @@ const SignUp = () => {
         <div className="form-input-holder">
           <label>Password</label>
           <input
-            placeholder="Choose a strong password"
+            placeholder="Password"
             type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
             value={password}

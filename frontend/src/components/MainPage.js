@@ -53,10 +53,16 @@ const Main = () => {
             <h1 className="title">DiGiSLAM</h1>
             <RxHamburgerMenu
               className="hamburger"
-              style={{
-                display: "block",
-              }}
+              onClick={() =>
+                document
+                  .querySelector(".mobile-nav")
+                  .classList.toggle("mobile-nav-active")
+              }
             />
+            <nav className="mobile-nav">
+              <button onClick={logout}>LOG OUT</button>
+              <button onClick={handleClick}>SEND +</button>
+            </nav>
             <div className="user-login-details">
               <button className="main-page-button" onClick={logout}>
                 LOG OUT

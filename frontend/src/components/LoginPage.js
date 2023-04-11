@@ -39,7 +39,7 @@ const LoginPage = () => {
         <div className="form-input-holder">
           <label>Email</label>
           <input
-            placeholder="Please Enter Your Email"
+            placeholder="Your Email"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
@@ -48,7 +48,7 @@ const LoginPage = () => {
         <div className="form-input-holder">
           <label>Password</label>
           <input
-            placeholder="Please Enter Your Password"
+            placeholder="Your Password"
             type={showPassword ? "text" : "password"}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
