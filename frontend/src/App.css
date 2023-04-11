@@ -1,349 +1,407 @@
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Gorditas&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gorditas&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .title {
-    display: inline-block;
-    padding: 5px;
-    font-size: 48px;
-    color: yellow;
-    text-shadow: 2px 2px aqua;
-    font-family: 'Gorditas', cursive;
+  display: inline-block;
+  padding: 5px;
+  font-size: 48px;
+  color: yellow;
+  text-shadow: 2px 2px aqua;
+  font-family: "Gorditas", cursive;
 }
-
 
 /* Landing page */
 .container-landing-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .container-landing-page h1 {
-    font-size: 96px;
-    color: yellow;
-    font-weight: lighter;
-    font-family: 'Gorditas', cursive;
-    text-shadow: -2px -2px aqua;
+  font-size: 96px;
+  color: yellow;
+  font-weight: lighter;
+  font-family: "Gorditas", cursive;
+  text-shadow: -2px -2px aqua;
 }
 
 .container-landing-page p {
-    font-size: 100px;
-    font-weight: 200;
-    text-align: center;
-    color: rgba(0, 255, 255, 0.8);
-    -webkit-text-stroke: whitesmoke;
-    text-shadow: -2px -2px yellow; 
-    font-family: 'Lilita One', cursive;
+  font-size: 100px;
+  font-weight: 200;
+  text-align: center;
+  color: rgb(0, 255, 255);
+  -webkit-text-stroke: whitesmoke;
+  text-shadow: -2px -2px yellow;
+  font-family: "Lilita One", cursive;
 }
 
 .container-landing-page button {
-    height: 6vh;
-    width: 25vw;
-    font-size: 32px;
-    font-weight: bolder;
-    color: darkblue;
-    background-color: rgb(255, 255, 0);
-    border-radius: 10px;
-    cursor: pointer;
+  height: 6vh;
+  width: 25vw;
+  font-size: 32px;
+  font-weight: bolder;
+  color: darkblue;
+  background-color: yellow;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 /* Signup and login form */
 
 .form {
-    margin: 0 33%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 35%;
-    height: 85vh;
-    background-color: rgba(254, 254, 254, 0.7);
-    border-radius: 25px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin: 0 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 35%;
+  height: 85vh;
+  background-color: rgba(254, 254, 254, 0.7);
+  border-radius: 25px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .form-input-holder {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 5pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5pt;
 }
 
 .form-input-holder label {
-    font-size: xx-large;
-    font-weight: 400;
-    margin-left: 5px;
+  font-size: xx-large;
+  font-weight: 400;
+  margin-left: 5px;
 }
 
 .form-input-holder input {
-    height: 6vh;
-    width: 25vw;
-    padding: 5px;
-    font-size: xx-large;
-    border-radius: 10px;
-    background-color: rgba(240, 248, 255, 0.5);
-    font-weight: 800;
+  height: 6vh;
+  width: 25vw;
+  padding: 5px;
+  font-size: xx-large;
+  border-radius: 10px;
+  background-color: rgba(240, 248, 255, 0.5);
+  font-weight: 800;
 }
 
 .form-input-holder input:focus {
-    outline: none;
-    border: 2px solid darkmagenta;
+  outline: none;
+  border: 2px solid darkmagenta;
 }
 
 .show-password {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 12vw;
-    font-size: x-large;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 12vw;
+  font-size: x-large;
 }
 
 input[type="checkbox"] {
-    transform: scale(2);
+  transform: scale(2);
 }
 
 .form button {
-    width: 15vw;
-    height: 6vh;
-    font-size: x-large;
-    border-radius: 15px;
-    border: 2px solid royalblue;
-    background-color: lightblue;
-    cursor: pointer;
+  width: 15vw;
+  height: 6vh;
+  font-size: x-large;
+  border-radius: 15px;
+  border: 2px solid royalblue;
+  background-color: lightblue;
+  cursor: pointer;
 }
 
 .navigation-para {
-    font-size: xx-large;
-    color: black;
-    font-weight: 900;
+  font-size: xx-large;
+  color: black;
+  font-weight: 900;
 }
 
 .navigation-para a {
-    text-decoration: none;
-    color: darkblue;
-    font-weight: 900;
+  text-decoration: none;
+  color: darkblue;
+  font-weight: 900;
 }
 
 .navigation-para a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* main page */
 
 .main-page-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .user-login-details {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-family: 'Lilita One', cursive;
-    min-width: 35vw;
-    gap: 2vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: "Lilita One", cursive;
+  min-width: 35vw;
+  gap: 2vh;
 }
 
 .user-login-details p {
-    font-size: 36px;
-    font-weight: 700;
-    color: darkturquoise;
-    text-shadow: 1px 1px yellow;
-    cursor: pointer;
-    -webkit-text-stroke: 2px #000;
+  font-size: 36px;
+  font-weight: 700;
+  color: darkturquoise;
+  text-shadow: 1px 1px yellow;
+  cursor: pointer;
+  -webkit-text-stroke: 2px #000;
 }
 
 .main-page-button {
-    width: 10vw;
-    height: 5vh;
-    border-radius: 15px;
-    border: 2px solid darkblue;
-    background-color: lightblue;
-    font-family: 'Lilita One', cursive;
-    font-size: x-large;
-    text-shadow: 2px 2px yellow;
-    cursor: pointer;
+  width: 10vw;
+  height: 5vh;
+  border-radius: 15px;
+  border: 2px solid darkblue;
+  background-color: lightblue;
+  font-family: "Lilita One", cursive;
+  font-size: x-large;
+  text-shadow: 2px 2px yellow;
+  cursor: pointer;
 }
 
 .main-page-button:active {
-    transform: translate3d(2px, 2px, 2px);
+  transform: translate3d(2px, 2px, 2px);
 }
 
 .logged-out {
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .logged-out h1 {
-    font-size: 64px;
-    color: darkgoldenrod;
-    text-shadow: 2px 2px yellow;
+  font-size: 64px;
+  color: darkgoldenrod;
+  text-shadow: 2px 2px yellow;
 }
 
 .logged-out p {
-    font-size: 48px;
-    color: yellow;
-    text-shadow: 2px 2px #fefefe;
+  font-size: 48px;
+  color: yellow;
+  text-shadow: 2px 2px #fefefe;
 }
 
 /* No slam data */
 .no-slam-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    height: 65vh;
-    width: 80%;
-    background-color: rgba(255, 255, 255, 0.5);
-    margin: 5% 10%;
-    border-radius: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  height: 65vh;
+  width: 80%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 5% 10%;
+  border-radius: 5vh;
 }
 
 .no-slam-data h1 {
-    font-family: 'Lilita One', cursive;
-    color: yellow;
-    text-shadow: 2px 2px black;
+  font-family: "Lilita One", cursive;
+  color: yellow;
+  text-shadow: 2px 2px black;
 }
 
 .no-slam-data button {
-    height: 5vh;
-    width: 15vh;
-    font-size: larger;
-    font-family: 'Lilita One', cursive;
-    border-radius: 10px;
-    box-shadow: 0 0 10px black;
-    cursor: pointer;
+  height: 5vh;
+  width: 15vh;
+  font-size: larger;
+  font-family: "Lilita One", cursive;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+  cursor: pointer;
 }
 
 /* Slam Container */
 
-
 .slam-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    margin: 5% 10px;
-    height: 70vh;
-    gap: 10vh;
-    padding: 5vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 5% 10px;
+  height: 70vh;
+  gap: 10vh;
+  padding: 5vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-.slam-container::-webkit-scrollbar{
-    background-color: yellow;
+.slam-container::-webkit-scrollbar {
+  background-color: yellow;
 }
 
 .slam-card {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 25vw;
-    height: 25vh;
-    background-color: rgba(0, 0, 255, 0.9);
-    box-shadow: 0 0 5px 5px #fefefed2;
-    cursor: pointer;
-    padding: 1vw;
-    border-radius: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 25vw;
+  height: 25vh;
+  background-color: rgba(0, 0, 255, 0.9);
+  box-shadow: 0 0 5px 5px #fefefed2;
+  cursor: pointer;
+  padding: 1vw;
+  border-radius: 20px;
 }
 
 .slam-card:active {
-    transform: translate3d(2px, 2px, 3px);
+  transform: translate3d(2px, 2px, 3px);
 }
 
 .slam-image {
-    box-shadow: 0 0 2px 2px yellow;
+  box-shadow: 0 0 2px 2px yellow;
 }
 
 .profile-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    height: 20vh;
-    font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  height: 20vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .profile-info h1 {
-    font-size: 36px;
-    color: yellow;
-    text-shadow: 2px 2px aqua;
+  font-size: 36px;
+  color: yellow;
+  text-shadow: 2px 2px aqua;
 }
 
 .social-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 5vh;
 }
 
 .social-info span {
-    font-size: x-large;
-    width: 10vw;
-    color: yellow;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+  font-size: x-large;
+  width: 10vw;
+  color: yellow;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .social-info span > p {
-    text-decoration: none;
-    font-size: 24px;
-    color: yellow;
-    font-weight: 800;
+  text-decoration: none;
+  font-size: 24px;
+  color: yellow;
+  font-weight: 800;
 }
 
 .send-slam-button {
-    height: 6vh;
-    width: 10vw;
-    font-size: 24px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 800;
-    color: black;
-    background-color: rgba(255, 255, 0, 0.8);
-    border-radius: 2vh;
+  height: 6vh;
+  width: 10vw;
+  font-size: 24px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 800;
+  color: black;
+  background-color: rgba(255, 255, 0, 0.8);
+  border-radius: 2vh;
 }
 
 /* Not found page */
 
 .not-found {
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    color: white;
-    margin-top: 25%;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  color: white;
+  margin-top: 25%;
 }
 
 .not-found h1 {
-    color: yellow;
-    text-shadow: 2px 2px goldenrod;
-    font-size: 64px;
+  color: yellow;
+  text-shadow: 2px 2px goldenrod;
+  font-size: 64px;
 }
 
 .not-found p {
-    color: darkturquoise;
-    font-size: 48px;
-    text-shadow: 2px 2px #fefefe;
+  color: darkturquoise;
+  font-size: 48px;
+  text-shadow: 2px 2px #fefefe;
 }
 
 /* Responsive Design */
+@media screen and (max-width: 700px){
+    .container-landing-page {
+        width: 100%;
+        height: 100vh;
+    }
+
+    .container-landing-page h1 {
+        font-size: 5vh;
+    }
+
+    .container-landing-page p {
+        font-size: 5vh;
+    }
+
+    .container-landing-page button {
+        width: 100%;
+        height: 5vh;
+        font-size: x-large;
+        padding: 5px;
+    }
+    
+    .form {
+        width: 80%;
+        margin: 0 10%;
+        font-size: small;
+        text-align: center;
+        margin-top: 5%;
+        padding: 5%;
+    }
+
+    .form-input-holder label {
+        font-size: x-large;
+    }
+
+    .form-input-holder input {
+        width: 100%;
+        height: 5vh;
+        font-size: large;
+    }
+
+    .show-password {
+        font-size: x-large;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3vh;
+    }
+
+    .form button {
+        width: 80%;
+        font-size: larger;
+    }
+
+    .navigation-para {
+        font-size: large;
+    }
+
+}
