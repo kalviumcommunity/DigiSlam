@@ -26,7 +26,7 @@ const Card = (props) => {
           alt="profile_image"
         />
         <div className="profile-info">
-          <h1>{data.slam.name}</h1>
+          <h1>{data.slam.name.split(" ")[0]}</h1>
           <div className="social-info">
             <span>
               <img src={insta} height={35} alt="caller" />
