@@ -8,20 +8,17 @@ import admin from "../assets/admin-logo.png";
 import { BsBackspace } from "react-icons/bs";
 
 const BasicOutput = () => {
-
   const routeParams = useParams();
-  const {user_id, id} = routeParams;
+  const { user_id, id } = routeParams;
   const [slams, setSlams] = useState([]);
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/digislam/apis/users/${user_id}`)
-      .then((response) => {
-        const all_slams = response.data.slams;
-        const user_slam = all_slams.filter((slam) => {
-          return slam.unique_id === id;
-        });
-        setSlams(user_slam[0]);
+    axios.get(process.env.REACT_APP_API_URL + user_id).then((response) => {
+      const all_slams = response.data.slams;
+      const user_slam = all_slams.filter((slam) => {
+        return slam.unique_id === id;
       });
+      setSlams(user_slam[0]);
+    });
   }, [user_id, id]);
 
   return (

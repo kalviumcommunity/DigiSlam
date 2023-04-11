@@ -35,7 +35,7 @@ const Main = () => {
   function handleClick() {
     toast.success("Copied!");
     navigator.clipboard.writeText(
-      `http://localhost:3000/basictemp/${user.user._id}`
+      process.env.REACT_APP_COPY_URL + user.user._id
     );
   }
   return isLoading ? (
@@ -54,7 +54,7 @@ const Main = () => {
             <RxHamburgerMenu
               className="hamburger"
               style={{
-                display: "none",
+                display: "block",
               }}
             />
             <div className="user-login-details">
