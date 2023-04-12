@@ -244,6 +244,10 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.mobile-nav {
+  display: none;
+}
+
 .mobile-nav button {
   height: 4vh;
   width: 20vw;
@@ -496,4 +500,6 @@ input[type="checkbox"] {
     align-items: center;
     gap: 3vh;
   }
+
+
 }
