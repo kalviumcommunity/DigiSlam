@@ -269,13 +269,6 @@ input[type="checkbox"] {
   padding: 5vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.8071603641456583) 44%,
-    rgba(170, 170, 170, 1) 82%
-  );
 }
 
 .slam-container::-webkit-scrollbar {
@@ -511,7 +504,8 @@ input[type="checkbox"] {
   }
 
   .slam-card {
-    width: 95%;
+    width: 100%;
+    padding: 2rem;
   }
 
   .slam-image {
@@ -525,6 +519,10 @@ input[type="checkbox"] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-right: 20%;
+    margin-left: 5%;
+  }
+
+  .profile-info h1 {
+    margin-left: 5%;
   }
 }
