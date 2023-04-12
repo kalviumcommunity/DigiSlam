@@ -153,7 +153,7 @@ const Template = () => {
           </div>
           <div className="svg-field">
             <img src={upload_img_illu} height={200} alt="upload_img" />
-            <p className="image-instruction" style={{ fontSize: "32px" }}>
+            <p className="image-instruction" style={{ fontSize: "x-large" }}>
               Please Upload A Clear Picture Of Yours:{" "}
             </p>
             {img === "" ? (
@@ -162,7 +162,7 @@ const Template = () => {
                 style={{ cursor: "pointer" }}
                 onClick={() => image_box.click()}
               >
-                <p style={{ fontSize: "32px" }}>
+                <p style={{ fontSize: "larger" }}>
                   + <br />
                   <br />
                   Your Awesome Image
