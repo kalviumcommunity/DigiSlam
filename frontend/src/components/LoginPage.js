@@ -3,7 +3,7 @@ import landingPageBackground from "./assets/LoginBG.jpg";
 import { Link } from "react-router-dom";
 import Loader from "./loader/Loader";
 import { useLogin } from "./hooks/useLogin";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
@@ -61,7 +61,7 @@ const LoginPage = () => {
           />
           <p>Show Password</p>
         </div>
-        <button disabled={loading}>LOG IN</button>
+        <button disabled={loading} onClick={() => toast.warn("Wait...")}>LOG IN</button>
         <p className="navigation-para">
           New to digislam?{" "}
           <Link to="/sign_up">
