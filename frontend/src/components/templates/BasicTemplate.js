@@ -153,7 +153,7 @@ const Template = () => {
           </div>
           <div className="svg-field">
             <img src={upload_img_illu} height={200} alt="upload_img" />
-            <p style={{ fontSize: "32px" }}>
+            <p className="image-instruction" style={{ fontSize: "32px" }}>
               Please Upload A Clear Picture Of Yours:{" "}
             </p>
             {img === "" ? (
@@ -203,7 +203,7 @@ const Template = () => {
             </div>
             <img src={fav_song_illu} height={200} alt="fav_song" />
           </div>
-          <div className="svg-field">
+          <div className="svg-field reverse">
             <img src={fears_illu} height={200} alt="fear_img" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>Biggest Fear</label>
@@ -229,7 +229,7 @@ const Template = () => {
             </div>
             <img src={winner_illu} height={200} alt="winner" />
           </div>
-          <div className="svg-field">
+          <div className="svg-field reverse">
             <img src={hate_illu} alt="hate" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
@@ -253,7 +253,7 @@ const Template = () => {
             </div>
             <img src={like_illu} height={200} alt="likes" />
           </div>
-          <div className="svg-field">
+          <div className="svg-field reverse">
             <img src={improve_illu} height={200} alt="improve" />
             <div className="row-content">
               <label style={{ alignSelf: "flex-start" }}>
