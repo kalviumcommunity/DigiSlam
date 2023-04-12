@@ -94,7 +94,7 @@
 @media screen and (max-width: 768px) {
     .form-container {
         width: 100%;
-        min-height: 250vh;
+        min-height: 100vh;
     }
 
     .header {
