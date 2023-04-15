@@ -24,7 +24,7 @@
 | Simple API - CRUD Operations using NodeJs       | ✔      | [-](#)                                                    |
 | Schemas and Models                              | ✔      | [-](#)                                                    |
 | **Front-end**                                   | 👇     | 🔗                                                        |
-| High-fid design for your application            | ✔      | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/3) |
+| High-fid design for your application            | ✔      | [FIGMA](https://www.figma.com/file/bdPosMF7k9aaGOibeHMIf6/Capstone-Project-Design?node-id=0%3A1&t=StlKHhkOUXFe3djq-1) |
 | ReactJS app initialization                      | ✔      | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/2) |
 | Application components created                  | ✔      | [PR](https://github.com/kalviumcommunity/DigiSlam/pull/2) |
 | Application deployed                            | ✔      | [Digislam](https://digislam.pages.dev)                    |
