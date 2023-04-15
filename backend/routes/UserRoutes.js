@@ -30,8 +30,7 @@ router.put("/:_id", async (req, resp) => {
     if (image) {
       result = await cloudinary.uploader.upload(image, {
         folder: "digislam",
-        width: 100,
-        crop: "scale",
+        width: 500,
       });
     }
 

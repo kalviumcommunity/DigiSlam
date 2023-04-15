@@ -6,6 +6,7 @@ import { useLogout } from "../components/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { ThreeDots } from "react-loader-spinner";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Main = () => {
@@ -79,6 +80,16 @@ const Main = () => {
         <div className="logged-out">
           <h1>DiGiSLAM</h1>
           <p>You are logged out, Redirecting...</p>
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color="yellow"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          />
         </div>
       )}
     </>
