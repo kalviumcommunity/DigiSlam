@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const cloudinary = require("../utils/cloudinary");
 const SECRET = process.env.SECRET;
 const createToken = (_id) => {
-  return jwt.sign({ _id }, SECRET, { expiresIn: "365d" });
+  return jwt.sign({ _id }, SECRET, { expiresIn: "86400" });
 };
 
 // appending slam data
