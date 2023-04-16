@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import YourBook from "./YourBook";
 import YourSlams from "./YourSlams";
+import SharedSlams from "./SharedSlams";
+import RecievedSlams from "./RecievedSlams";
 import Loader from "./loader/Loader";
 import { useLogout } from "../components/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
@@ -48,6 +50,10 @@ const Main = () => {
       setComponent(<YourBook />);
     } else if (active === 1) {
       setComponent(<YourSlams />);
+    } else if (active === 2) {
+      setComponent(<SharedSlams />);
+    } else {
+      setComponent(<RecievedSlams />);
     }
   };
   return isLoading ? (
@@ -94,7 +100,8 @@ const Main = () => {
             >
               <option>Your Book</option>
               <option>Your Slams</option>
-              <option>Send to your friends</option>
+              <option>Share Slams</option>
+              <option>Recieved Slams</option>
             </select>
           </div>
           {component}
