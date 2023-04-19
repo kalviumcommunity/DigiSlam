@@ -292,7 +292,7 @@ input[type="checkbox"] {
   display: grid;
   grid-template-columns: auto auto auto;
   margin: 5% 10px;
-  height: 70vh;
+  height: 50vh;
   gap: 10vh;
   padding: 5vh;
   overflow-y: scroll;
@@ -300,7 +300,7 @@ input[type="checkbox"] {
 }
 
 .slam-container::-webkit-scrollbar {
-  background-color: yellow;
+  background-color: rgba(0, 39, 93, 0.751);
 }
 
 .slam-card {
@@ -309,8 +309,8 @@ input[type="checkbox"] {
   align-items: center;
   width: 25vw;
   height: 25vh;
-  background-color: rgba(0, 0, 255, 0.9);
-  box-shadow: 0 0 5px 5px #fefefed2;
+  background-color: rgba(0, 0, 255, 0.7);
+  box-shadow: 0 0 5px 5px #fefefe;
   cursor: pointer;
   padding: 1vw;
   border-radius: 20px;
