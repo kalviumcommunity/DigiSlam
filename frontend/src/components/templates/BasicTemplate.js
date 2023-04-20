@@ -14,6 +14,7 @@ import improve_illu from "../assets/improve.svg";
 import phone_logo from "../assets/call_logo.webp";
 import insta_logo from "../assets/insta_logo.png";
 import { useAuthContext } from "../hooks/useAuthContext";
+import axios from "axios";
 
 const Template = () => {
   const { user } = useAuthContext();
