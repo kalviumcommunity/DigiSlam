@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
 const YourSlams = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  useEffect(() => {
+    
+  });
+  return (<div style={{marginTop: "10vh"}}>
+    <h1 style={{color: "white"}}>Hello Everyone</h1>
+  </div>);
+};
 
-export default YourSlams
+export default YourSlams;

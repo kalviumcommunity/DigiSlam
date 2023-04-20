@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import "./Template.css";
 import { ToastContainer, toast } from "react-toastify";
@@ -17,8 +17,11 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 const Template = () => {
   const { user } = useAuthContext();
+  console.log(user.user._id);
+  const state = user === null;
   const routeParam = useParams();
   const { id } = routeParam;
+  console.log(id, user.user._id);
   const navigate = useNavigate();
   const [img, setImg] = useState("");
   const [Data, setData] = useState({
@@ -54,18 +57,21 @@ const Template = () => {
       toast.error("Please Enter Your Name");
     } else {
       toast.warn("Submitting...");
-      const response = await fetch(process.env.REACT_APP_API_URL + id, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(Data),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}${id}/${user.user._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(Data),
+        }
+      );
 
       const data = response.json();
 
       if (response.ok) {
-        toast.success("Submitted Succesfully.");
+        toast("Submitted Succesfully.");
         console.log(data);
         setTimeout(() => {
           navigate(user !== null ? "/main" : "/login", { replace: true });
@@ -85,7 +91,14 @@ const Template = () => {
     setData({ ...Data, image: base64 });
   };
 
-  return (
+  return state ? (
+    <>
+      <h1>Login First</h1>
+      <Link to="/login">
+        <button>Go to Login Page</button>
+      </Link>
+    </>
+  ) : (
     <>
       <header className="header">
         <p>THE STORY OF MY LIFE</p>
