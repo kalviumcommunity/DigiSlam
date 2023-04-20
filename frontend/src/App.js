@@ -25,7 +25,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/load" element={<Loader />} />
         <Route path="/basictemp/:id" element={<BasicTemplate />} />
-        <Route path="/basic_out/:user_id/:id" element={<BasicOutput />} />
+        <Route path="/basic_out/:user_id/:id" element={<BasicOutput />}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
