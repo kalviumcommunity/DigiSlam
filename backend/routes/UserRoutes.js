@@ -10,8 +10,8 @@ const createToken = (_id) => {
 };
 
 // appending slam data
-router.put("/:_id/:user_id", async (req, resp) => {
-  const { _id, user_id } = req.params;
+router.put("/:_id", async (req, resp) => {
+  const { _id } = req.params;
   const {
     unique_id,
     name,
@@ -34,11 +34,11 @@ router.put("/:_id/:user_id", async (req, resp) => {
       });
     }
 
-    const user = await User.findByIdAndUpdate(
+    const user = await User.findOneAndUpdate(
       { _id },
       {
         $addToSet: {
-          filled_slams: {
+          slams: {
             unique_id,
             name,
             instagram,
@@ -57,33 +57,10 @@ router.put("/:_id/:user_id", async (req, resp) => {
       },
       { new: true }
     );
-    const new_user = await User.findByIdAndUpdate(
-      { _id: user_id },
-      {
-        $addToSet: {
-          my_slams: {
-            unique_id,
-            name,
-            instagram,
-            phone,
-            image: result
-              ? result.secure_url
-              : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-            biggest_fear,
-            favourite_song,
-            accomplishment,
-            dislike,
-            goodness,
-            improve,
-          },
-        },
-      },
-      { new: true }
-    );
-    if (!user || !new_user) {
+    if (!user) {
       resp.status(400).json({ error: "Update unsuccesful" });
     } else {
-      resp.status(200).json({ mssg: "Update successful" });
+      resp.status(200).json(user);
     }
   } catch (e) {
     resp.status(401).json({ error: e.message });
@@ -115,30 +92,6 @@ router.post("/signup", async (req, resp) => {
     resp.status(200).json({ token, user });
   } catch (e) {
     resp.status(400).json({ error: e.message });
-  }
-});
-
-//Sending the slam to others
-router.post("/share/:_id", async (req, resp) => {
-  const { _id } = req.params;
-  const slam = req.body;
-
-  try {
-    const sent_slam = await User.findByIdAndUpdate(
-      _id,
-      {
-        $addToSet: { my_slams: slam },
-      },
-      { new: true }
-    );
-
-    if (!sent_slam) {
-      resp.status(400).json({ e: "Something went wrong." });
-    } else {
-      resp.status(200).json(sent_slam);
-    }
-  } catch (e) {
-    resp.status(500).json({ e: e.message });
   }
 });
 
