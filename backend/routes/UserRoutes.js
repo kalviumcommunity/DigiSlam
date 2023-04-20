@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const cloudinary = require("../utils/cloudinary");
 const SECRET = process.env.SECRET;
 const createToken = (_id) => {
-  return jwt.sign({ _id }, SECRET, { expiresIn: "365d" });
+  return jwt.sign({ _id }, SECRET, { expiresIn: "86400" });
 };
 
 // appending slam data
@@ -30,8 +30,7 @@ router.put("/:_id", async (req, resp) => {
     if (image) {
       result = await cloudinary.uploader.upload(image, {
         folder: "digislam",
-        width: 100,
-        crop: "scale",
+        width: 500,
       });
     }
 

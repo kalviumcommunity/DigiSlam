@@ -3,7 +3,7 @@ import landingPageBackground from "./assets/LoginBG.jpg";
 import { Link } from "react-router-dom";
 import Loader from "./loader/Loader";
 import { useSignUp } from "./hooks/useSignUp";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -69,7 +69,7 @@ const SignUp = () => {
           />
           <label>Show Password</label>
         </div>
-        <button disabled={loading}>CREATE ACCOUNT</button>
+        <button disabled={loading} onClick={() => toast.warn("Wait...")}>CREATE ACCOUNT</button>
         <p className="navigation-para">
           Have an account?{" "}
           <Link to="/login">

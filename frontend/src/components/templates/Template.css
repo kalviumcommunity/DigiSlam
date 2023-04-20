@@ -27,7 +27,7 @@
 /* input image field */
 .input-image {
     border: 2px dashed darkcyan;
-    height: 25vh !important;
+    height: 25vh;
     width: 10vw;
     padding: 2px;
     display: flex;
@@ -91,6 +91,59 @@
     background-color: lightblue;
 }
 
-@media screen and (max-width: 992px) {
-    
+@media screen and (max-width: 768px) {
+    .form-container {
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .header {
+        font-size: xx-large;
+    }
+
+    .header img {
+        height: 15vh;
+    }
+
+    .image-instruction {
+        display: none;
+    }
+
+    .svg-field {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        min-height: 75vh;
+    }
+
+    .row-content {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .row-content textarea {
+        align-self: flex-start;
+        width: 75vw;
+    }
+
+    .row-content input {
+        align-self: flex-start;
+        width: 100% !important;
+    }
+
+    .reverse {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .form-container button {
+        width: 80%;
+        height: 6vh;
+    }
+
+    .input-image {
+        width: 60%;
+        height: 30vh;
+    }
 }

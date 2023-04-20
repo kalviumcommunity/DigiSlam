@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
 import YourBook from "./YourBook";
+import YourSlams from "./YourSlams";
+import SharedSlams from "./SharedSlams";
+import RecievedSlams from "./RecievedSlams";
 import Loader from "./loader/Loader";
 import { useLogout } from "../components/hooks/useLogout";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
+import { ThreeDots } from "react-loader-spinner";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Main = () => {
   const { user } = useAuthContext();
-  const [isLoading, setIsLoading] = useState(true);
   const { logout } = useLogout();
+  const [isLoading, setIsLoading] = useState(true);
+  const [component, setComponent] = useState(<YourBook />);
   const [timer, setTimer] = useState(5);
   const navigate = useNavigate();
   useEffect(() => {
@@ -38,6 +43,19 @@ const Main = () => {
       process.env.REACT_APP_COPY_URL + user.user._id
     );
   }
+
+  const handleOptions = (e) => {
+    const active = e.target.selectedIndex;
+    if (active === 0) {
+      setComponent(<YourBook />);
+    } else if (active === 1) {
+      setComponent(<YourSlams />);
+    } else if (active === 2) {
+      setComponent(<SharedSlams />);
+    } else {
+      setComponent(<RecievedSlams />);
+    }
+  };
   return isLoading ? (
     <Loader />
   ) : (
@@ -73,12 +91,35 @@ const Main = () => {
               <p>{user && `Hi ${user.user.username.split(" ")[0]} ✌`}</p>
             </div>
           </div>
-          <YourBook />
+          <div className="selection-holder">
+            <select
+              onChange={handleOptions}
+              id="active-class"
+              name="active"
+              className="active-component"
+            >
+              <option>Your Book</option>
+              <option>Your Slams</option>
+              <option>Share Slams</option>
+              <option>Recieved Slams</option>
+            </select>
+          </div>
+          {component}
         </>
       ) : (
         <div className="logged-out">
           <h1>DiGiSLAM</h1>
           <p>You are logged out, Redirecting...</p>
+          <ThreeDots
+            height="80"
+            width="80"
+            radius="9"
+            color="yellow"
+            ariaLabel="three-dots-loading"
+            wrapperStyle={{}}
+            wrapperClassName=""
+            visible={true}
+          />
         </div>
       )}
     </>
