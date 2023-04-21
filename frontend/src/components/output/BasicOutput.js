@@ -13,7 +13,7 @@ const BasicOutput = () => {
   const [slams, setSlams] = useState([]);
   useEffect(() => {
     axios.get(process.env.REACT_APP_API_URL + user_id).then((response) => {
-      const all_slams = response.data.slams;
+      const all_slams = response.data.filled_slams;
       const user_slam = all_slams.filter((slam) => {
         return slam.unique_id === id;
       });

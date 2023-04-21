@@ -21,7 +21,30 @@ const UserSchema = new Schema({
     required: true,
   },
 
-  my_slams: {
+  received_slams: {
+    type: Array,
+    default: [],
+    items: {
+      type: [
+        {
+          unique_id: String,
+          usersId: String,
+          name: String,
+          instagram: String,
+          phone: Number,
+          image: String,
+          biggest_fear: String,
+          favourite_song: String,
+          accomplishment: String,
+          dislike: String,
+          goodness: String,
+          improve: String,
+        },
+      ],
+    },
+  },
+
+  shared_slams: {
     type: Array,
     default: [],
     items: {
@@ -43,7 +66,30 @@ const UserSchema = new Schema({
     },
   },
 
-  slams: {
+  my_slams: {
+    type: Array,
+    default: [],
+    items: {
+      type: [
+        {
+          unique_id: String,
+          usersId: String,
+          name: String,
+          instagram: String,
+          phone: Number,
+          image: String,
+          biggest_fear: String,
+          favourite_song: String,
+          accomplishment: String,
+          dislike: String,
+          goodness: String,
+          improve: String,
+        },
+      ],
+    },
+  },
+
+  filled_slams: {
     type: Array,
     default: [],
     items: {
