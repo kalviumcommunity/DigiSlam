@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import "./Template.css";
 import { ToastContainer, toast } from "react-toastify";
