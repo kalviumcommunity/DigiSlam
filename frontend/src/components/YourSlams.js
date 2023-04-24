@@ -34,7 +34,7 @@ const YourSlams = () => {
   });
   return (
     <div style={{ marginTop: "10vh" }}>
-      {mySlams.length > 0 ? (
+      {mySlams && mySlams.length > 0 ? (
         mySlams.map((slam) => {
           return (
             <div
