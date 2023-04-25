@@ -27,7 +27,7 @@ const YourBook = () => {
             setTimeout(() => {
               setFetching(false);
             }, 1500);
-            setSlams(res.data.filled_slams);
+            setSlams(res.data.slams);
           }
         })
         .catch((e) => {

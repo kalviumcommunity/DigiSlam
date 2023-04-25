@@ -16,11 +16,12 @@ import insta_logo from "../assets/insta_logo.png";
 import axios from "axios";
 
 const Template = () => {
-  const { user } = useAuthContext();
   const routeParam = useParams();
   const navigate = useNavigate();
   const [Data, setData] = useState({
-    unique_id: routeParam.id,
+    unique_id: "",
+    uid: "",
+    sid: "",
     name: "",
     instagram: "",
     phone: "",
@@ -37,7 +38,7 @@ const Template = () => {
     e.preventDefault();
     await axios
       .patch(
-        `${process.env.REACT_APP_API_URL}update/${user.user._id}/${Data.usersId}/${routeParam.id}`,
+        `${process.env.REACT_APP_API_URL}update/${Data.sid}/${Data.unique_id}`,
         Data
       )
       .then((res) => {
@@ -55,12 +56,14 @@ const Template = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}${routeParam.user_id}`)
       .then((res) => {
-        setData(res.data.my_slams[0]);
+        setData(res.data.slams.filter((slam) => {
+          return slam.unique_id === routeParam.id
+        })[0]);
       })
       .catch((e) => {
         console.log(e.message);
       });
-  }, [routeParam.user_id]);
+  }, [routeParam.user_id, routeParam.id]);
 
   return (
     <>

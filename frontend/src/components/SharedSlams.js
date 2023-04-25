@@ -25,20 +25,15 @@ const SharedSlams = () => {
   };
 
   const handleClick = async (e, slam, item) => {
+    console.log(item.username);
+    const val = { shared_id: slam.sid, slam_id: slam.unique_id };
     await axios
-      .post(`${process.env.REACT_APP_API_URL}share/${item._id}`, {
-        ...slam,
-        usersId: user.user._id,
-      })
+      .post(`${process.env.REACT_APP_API_URL}share/${item._id}`, val)
       .then((res) => {
-        if (res.status === 200) {
-          console.log(res.data);
-          toast.success(`Sent to ${item.username.split(" ")[0]}`);
-        }
+        toast(`Sent to ${item.username.split(" ")[0]}`);
       })
       .catch((e) => {
-        toast.error("Something went wrong");
-        console.log(e.message);
+        toast.error("Something went wrong.");
       });
   };
 
@@ -46,7 +41,7 @@ const SharedSlams = () => {
     axios
       .get(process.env.REACT_APP_API_URL + user.user._id)
       .then((res) => {
-        setData(res.data.filled_slams);
+        setData(res.data.slams);
       })
       .catch((e) => {
         console.log(e);
@@ -93,7 +88,9 @@ const SharedSlams = () => {
           >
             <div
               style={{
+                marginTop: "10vh",
                 display: "flex",
+                flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "space-evenly",
                 backgroundColor: "rgba(255, 255, 255, 0.5)",
@@ -101,17 +98,21 @@ const SharedSlams = () => {
             >
               <h1 style={{ color: "white" }}>{slam.name}</h1>
               <input value={search} onChange={handleChange} />
-              {searchResults.map((item) => {
-                return (
-                  <h1
-                    onClick={(e) => handleClick(e, slam, item)}
-                    key={item._id}
-                    style={{ color: "white" }}
-                  >
-                    {item.username}
-                  </h1>
-                );
-              })}
+              {searchResults
+                .filter((slam_item) => {
+                  return slam_item.username !== slam.name;
+                })
+                .map((item) => {
+                  return (
+                    <h1
+                      onClick={(e) => handleClick(e, slam, item)}
+                      key={item._id}
+                      style={{ color: "white" }}
+                    >
+                      {item.username}
+                    </h1>
+                  );
+                })}
             </div>
           </div>
         );

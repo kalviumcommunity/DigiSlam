@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import "./Template.css";
@@ -24,6 +24,7 @@ const Template = () => {
   const [img, setImg] = useState("");
   const [Data, setData] = useState({
     unique_id: uuidv4(),
+    sid: id,
     name: "",
     instagram: "",
     phone: "",
@@ -81,7 +82,6 @@ const Template = () => {
       }
     }
   };
-
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
     setImg(URL.createObjectURL(file));

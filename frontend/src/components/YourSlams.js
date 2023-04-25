@@ -10,7 +10,7 @@ const YourSlams = () => {
   const handleDelete = async (e, slam) => {
     await axios
       .delete(
-        `${process.env.REACT_APP_API_URL}delete/${user.user._id}/${slam.usersId}/${slam.unique_id}`
+        `${process.env.REACT_APP_API_URL}delete/${slam.sid}/${slam.unique_id}`
       )
       .then((resp) => {
         if (resp.status === 200) {
@@ -18,18 +18,26 @@ const YourSlams = () => {
         }
       })
       .catch((e) => {
-        console.log(e.message);
+        toast("Something went wrong.");
       });
   };
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_API_URL + user.user._id)
+      .get(process.env.REACT_APP_API_URL)
       .then((resp) => {
-        setMySlams(resp.data.my_slams);
+        setMySlams(
+          resp.data
+            .filter((item) =>
+              item.slams.some((slam) => slam.uid === user.user._id)
+            )
+            .map((slam) =>
+              slam.slams.filter((slam) => slam.uid === user.user._id)
+            )[0]
+        );
       })
       .catch((e) => {
-        console.log(e);
+        toast(e.message);
       });
   });
   return (
@@ -55,7 +63,7 @@ const YourSlams = () => {
                 <button
                   style={{ width: "5vw", backgroundColor: "lightblue" }}
                   onClick={() =>
-                    window.open(`/update/${user.user._id}/${slam.unique_id}`)
+                    window.open(`/update/${slam.sid}/${slam.unique_id}`)
                   }
                 >
                   Update

@@ -11,6 +11,7 @@ import { useAuthContext } from "./hooks/useAuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import { ThreeDots } from "react-loader-spinner";
 import { RxHamburgerMenu } from "react-icons/rx";
+import axios from "axios";
 
 const Main = () => {
   const { user } = useAuthContext();
@@ -56,6 +57,17 @@ const Main = () => {
       setComponent(<RecievedSlams />);
     }
   };
+
+  useEffect(() => {
+    axios.get(process.env.REACT_APP_API_URL, {}).then((resp) => {
+      console.log(
+        resp.data.filter((item) => {
+          return item.username === "Ayush Kumar";
+        })
+      );
+    });
+  }, []);
+
   return isLoading ? (
     <Loader />
   ) : (
