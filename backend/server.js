@@ -6,7 +6,7 @@ const UserRoutes = require("./routes/UserRoutes");
 const cors = require("cors");
 const PORT = process.env.PORT;
 const MONGODB_TEST = process.env.MONGODB_TEST;
-const MONGODB_URL = process.env.MONGOSB_URL;
+const MONGODB_URL = process.env.MONGODB_URL;
 
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
