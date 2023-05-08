@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import landingPageBackground from "./assets/LoginBG.jpg";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Loader from "./loader/Loader";
 import { useLogin } from "./hooks/useLogin";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,8 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const params = useParams();
-  console.log(params);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
