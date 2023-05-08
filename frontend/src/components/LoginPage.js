@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  console.log(window.location.search === "?redirect=true");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
