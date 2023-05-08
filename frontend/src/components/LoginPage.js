@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-  console.log(window.location.search === "?redirect=true");
+  const redirect = window.location.search === "?redirect=true";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(true);
@@ -65,7 +65,7 @@ const LoginPage = () => {
         <button disabled={loading} onClick={() => toast.warn("Wait...")}>LOG IN</button>
         <p className="navigation-para">
           New to digislam?{" "}
-          <Link to="/sign_up">
+          <Link to={redirect ? "/signup/?redirect=true" : "/signup"}>
             <span>Sign up</span>
           </Link>{" "}
         </p>
