@@ -15,7 +15,7 @@ app.use("/digislam/apis/users", UserRoutes);
 mongoose.set("strictQuery", false);
 
 mongoose
-  .connect(MONGODB_TEST, {
+  .connect(MONGODB_URL, {
     family: 4
   })
   .then(() => {
