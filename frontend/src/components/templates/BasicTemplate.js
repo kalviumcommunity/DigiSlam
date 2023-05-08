@@ -92,7 +92,7 @@ const Template = () => {
   return state ? (
     <>
       <h1>Login First</h1>
-      <Link to="/login">
+      <Link to="/login/?redirect=true">
         <button>Go to Login Page</button>
       </Link>
     </>
