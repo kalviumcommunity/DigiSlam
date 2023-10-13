@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { v4 as uuidv4 } from "uuid";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 import "./Template.css";
 import { ToastContainer, toast } from "react-toastify";
 import friendsUnderTree from "../assets/friends_under_tree.svg";
@@ -13,18 +13,15 @@ import like_illu from "../assets/like_me.svg";
 import improve_illu from "../assets/improve.svg";
 import phone_logo from "../assets/call_logo.webp";
 import insta_logo from "../assets/insta_logo.png";
-import { useAuthContext } from "../hooks/useAuthContext";
+import axios from "axios";
 
 const Template = () => {
-  const { user } = useAuthContext();
-  const state = user === null;
   const routeParam = useParams();
-  const { id } = routeParam;
   const navigate = useNavigate();
-  const [img, setImg] = useState("");
   const [Data, setData] = useState({
-    unique_id: uuidv4(),
-    sid: id,
+    unique_id: "",
+    uid: "",
+    sid: "",
     name: "",
     instagram: "",
     phone: "",
@@ -36,67 +33,39 @@ const Template = () => {
     goodness: "",
     improve: "",
   });
-  const image_box = document.getElementById("image");
-  function convertToBase64(file) {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => {
-        resolve(fileReader.result);
-      };
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Data.name === "") {
-      toast.error("Please Enter Your Name");
-    } else {
-      toast.warn("Submitting...");
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}${id}/${user.user._id}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(Data),
-        }
-      );
-
-      const data = response.json();
-
-      if (response.ok) {
-        toast("Submitted Succesfully.");
-        console.log(data);
+    await axios
+      .patch(
+        `${process.env.REACT_APP_API_URL}update/${Data.sid}/${Data.unique_id}`,
+        Data
+      )
+      .then((res) => {
+        toast(res.data.mssg);
         setTimeout(() => {
-          navigate(user !== null ? "/main" : "/login", { replace: true });
+          navigate("/main", { replace: true });
         }, 3500);
-      }
-      if (!response.ok) {
-        toast.error(data.error);
-        console.log(data);
-      }
-    }
-  };
-  const handleFileUpload = async (e) => {
-    const file = e.target.files[0];
-    setImg(URL.createObjectURL(file));
-    const base64 = await convertToBase64(file);
-    setData({ ...Data, image: base64 });
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
 
-  return state ? (
-    <>
-      <h1>Login First</h1>
-      <Link to="/login/?redirect=true">
-        <button>Go to Login Page</button>
-      </Link>
-    </>
-  ) : (
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}${routeParam.user_id}`)
+      .then((res) => {
+        setData(res.data.slams.filter((slam) => {
+          return slam.unique_id === routeParam.id
+        })[0]);
+      })
+      .catch((e) => {
+        console.log(e.message);
+      });
+  }, [routeParam.user_id, routeParam.id]);
+
+  return (
     <>
       <header className="header">
         <p>THE STORY OF MY LIFE</p>
@@ -164,40 +133,15 @@ const Template = () => {
           </div>
           <div className="svg-field">
             <img src={upload_img_illu} height={200} alt="upload_img" />
-            <p className="image-instruction" style={{ fontSize: "x-large" }}>
-              Please Upload A Clear Picture Of Yours:{" "}
-            </p>
-            {img === "" ? (
-              <div
-                className="input-image"
+            <div className="input-image">
+              <img
+                src={Data.image}
+                height={250}
+                width={200}
+                alt="uploaded_image"
                 style={{ cursor: "pointer" }}
-                onClick={() => image_box.click()}
-              >
-                <p style={{ fontSize: "larger" }}>
-                  + <br />
-                  <br />
-                  Your Awesome Image
-                </p>
-              </div>
-            ) : (
-              <div className="input-image">
-                <img
-                  src={img}
-                  height={225}
-                  width={175}
-                  alt="uploaded_image"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => image_box.click()}
-                />
-              </div>
-            )}
-            <input
-              style={{ display: "none" }}
-              type="file"
-              id="image"
-              accept=".jpeg, .png, .jpg"
-              onChange={(e) => handleFileUpload(e)}
-            />
+              />
+            </div>
           </div>
           <div className="svg-field">
             <div className="row-content">
@@ -277,13 +221,13 @@ const Template = () => {
             </div>
           </div>
         </div>
-        <button>Submit</button>
+        <button>Update</button>
       </form>
     </>
   );
 };
 
-const BasicTemplate = () => {
+const UpdateSlam = () => {
   return (
     <>
       <Template />
@@ -292,4 +236,4 @@ const BasicTemplate = () => {
   );
 };
 
-export default BasicTemplate;
+export default UpdateSlam;

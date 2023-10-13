@@ -9,11 +9,12 @@ const createToken = (_id) => {
   return jwt.sign({ _id }, SECRET, { expiresIn: "86400" });
 };
 
-// appending slam data
-router.put("/:_id", async (req, resp) => {
-  const { _id } = req.params;
+// appending the slam
+router.put("/:_id/:u_id", async (req, resp) => {
+  const { _id, u_id } = req.params;
   const {
     unique_id,
+    sid,
     name,
     instagram,
     phone,
@@ -33,32 +34,29 @@ router.put("/:_id", async (req, resp) => {
         width: 500,
       });
     }
-
-    const user = await User.findOneAndUpdate(
-      { _id },
-      {
-        $addToSet: {
-          slams: {
-            unique_id,
-            name,
-            instagram,
-            phone,
-            image: result
-              ? result.secure_url
-              : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
-            biggest_fear,
-            favourite_song,
-            accomplishment,
-            dislike,
-            goodness,
-            improve,
-          },
+    const user = await User.findByIdAndUpdate(_id, {
+      $push: {
+        slams: {
+          unique_id,
+          uid: u_id,
+          sid,
+          name,
+          instagram,
+          phone,
+          image: result
+            ? result.secure_url
+            : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png",
+          biggest_fear,
+          favourite_song,
+          accomplishment,
+          dislike,
+          goodness,
+          improve,
         },
       },
-      { new: true }
-    );
+    });
     if (!user) {
-      resp.status(400).json({ error: "Update unsuccesful" });
+      resp.status(400).json({ mssg: "something went wrong." });
     } else {
       resp.status(200).json(user);
     }
@@ -95,6 +93,30 @@ router.post("/signup", async (req, resp) => {
   }
 });
 
+//Sending the slam to others
+router.post("/share/:_id", async (req, resp) => {
+  const { _id } = req.params;
+  const data = req.body;
+
+  try {
+    const sent_slam = await User.findByIdAndUpdate(
+      _id,
+      {
+        $addToSet: { received: data },
+      },
+      { new: true }
+    );
+
+    if (!sent_slam) {
+      resp.status(400).json({ e: "Something went wrong." });
+    } else {
+      resp.status(200).json(sent_slam);
+    }
+  } catch (e) {
+    resp.status(500).json({ e: e.message });
+  }
+});
+
 //logging the user in
 router.post("/login", async (req, resp) => {
   const { email, password } = req.body;
@@ -107,6 +129,57 @@ router.post("/login", async (req, resp) => {
     resp.status(200).json({ token, user });
   } catch (e) {
     resp.status(401).json({ error: e.message });
+  }
+});
+
+//deleting a slam
+router.delete("/delete/:_id/:slam_id", async (req, resp) => {
+  const { _id, slam_id } = req.params;
+  try {
+    const Delete = await User.findByIdAndUpdate(
+      _id,
+      {
+        $pull: { slams: { unique_id: slam_id } },
+      },
+      { new: true }
+    );
+
+    if (!Delete) {
+      resp.status(400).json({ mssg: "Could not delete" });
+    } else {
+      resp.status(200).json(Delete);
+    }
+  } catch (e) {
+    resp.status(500).json({ error: e.message });
+  }
+});
+
+router.patch("/update/:_id/:slam_id", async (req, resp) => {
+  const { _id, slam_id } = req.params;
+  const data = req.body;
+
+  try {
+    const Remove = await User.findByIdAndUpdate(
+      _id,
+      {
+        $pull: { slams: { unique_id: slam_id } },
+      },
+      { new: true }
+    );
+
+    const Update = await User.findByIdAndUpdate(
+      _id,
+      { $addToSet: { slams: data } },
+      { new: true }
+    );
+
+    if (!Remove || !Update) {
+      resp.status(400).json({ mssg: "Something went wrong." });
+    } else {
+      resp.status(200).json({ mssg: "Updated Successfully" });
+    }
+  } catch (e) {
+    resp.status(500).json({ mssg: e.message });
   }
 });
 

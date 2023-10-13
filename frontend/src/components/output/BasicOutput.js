@@ -13,8 +13,7 @@ const BasicOutput = () => {
   const [slams, setSlams] = useState([]);
   useEffect(() => {
     axios.get(process.env.REACT_APP_API_URL + user_id).then((response) => {
-      const all_slams = response.data.slams;
-      const user_slam = all_slams.filter((slam) => {
+      const user_slam = response.data.slams.filter((slam) => {
         return slam.unique_id === id;
       });
       setSlams(user_slam[0]);
@@ -27,7 +26,7 @@ const BasicOutput = () => {
       <div className="slam-social-info">
         <div className="name-holder">
           <img
-            src={slams.image}
+            src={slams && slams.image}
             height={250}
             alt="profile_img"
             style={{

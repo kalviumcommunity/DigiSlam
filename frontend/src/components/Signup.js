@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const redirect = window.location.search === "?redirect=true";
   const [isLoading, setIsLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -72,7 +73,7 @@ const SignUp = () => {
         <button disabled={loading} onClick={() => toast.warn("Wait...")}>CREATE ACCOUNT</button>
         <p className="navigation-para">
           Have an account?{" "}
-          <Link to="/login">
+          <Link to={redirect ? "/login/?redirect=true" : "/login"}>
             <span> Log in</span>
           </Link>
         </p>

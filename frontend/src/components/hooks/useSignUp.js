@@ -26,9 +26,9 @@ export const useSignUp = () => {
       //save the user to local storage
       localStorage.setItem("user", JSON.stringify(json));
       toast.success("Signed Up Succesfully.", { className: "my-toast-body" });
-      setTimeout(() => {
-        navigate("/main", { replace: true });
-      }, 3000);
+      //setTimeout(() => {
+        //navigate("/main", { replace: true });
+      //}, 3000);
       //updating auth context
       dispatch({ type: "LOGIN", payload: json });
       setLoading(false);
